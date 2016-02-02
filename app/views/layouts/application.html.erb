@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>EventSocial</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <%= javascript_include_tag "vendor/assets/javascripts/modernizr" %>
+    <title><%= content_for?(:title) ? yield(:title) : "Event Social" %></title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
