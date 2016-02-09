@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   		user.provider = auth.provider
   		user.uid = auth.uid
-  		user.email = auth.info.email
-  		user.password = Devise.friendly_token[0,20]
+      user.username = auth.info.nickname
+      user.profile_image = auth.info.image
   	end
   end
 
@@ -25,8 +25,20 @@ class User < ActiveRecord::Base
   	end
   end
 
+  def email_required?
+    super && provider.blank?
+  end
+
   def password_required?
   	super && provider.blank?
+  end
+
+  def update_with_email(params, *options)
+    if email.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
   end
 
   def update_with_password(params, *options)
@@ -36,4 +48,5 @@ class User < ActiveRecord::Base
   		super
   	end
   end
+
 end
