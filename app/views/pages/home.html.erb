@@ -11,11 +11,7 @@
 			<legend>Sign Up</legend>
 			<div class="row">
 				<div class="small-12 medium-8 large-6 medium-centered columns">
-					<input type="text" placeholder="Email" id="new-user-email">
-					<input type="password" placeholder="Password" id="new-user-password">
-					<input type="password" placeholder="Confirm Password" id="new-user-confirm-password">
-					<a href="#" class="button small signup-button">Sign Up</a>
-					<p>Or <%= link_to image_tag("sign-in-with-twitter.png", :alt => 'Sign Up With Twitter', :class => 'twitter-login'), omniauth_authorize_path(:user, :twitter) %></p>
+					<%= render "sign_up_form" %>
 				</div>
 			</div>
 		</fieldset>
@@ -25,10 +21,7 @@
 			<legend>Log In</legend>
 			<div class="row">
 				<div class="small-12 medium-8 large-6 medium-centered columns">
-					<input type="text" placeholder="Email" id="existing-user-email">
-					<input type="password" placeholder="Password" id="existing-user-password">
-					<a href="#" class="button small login-button">Log In</a>
-					<p>Or <%= link_to image_tag("sign-in-with-twitter.png", :alt => 'Sign Up With Twitter', :class => 'twitter-login'), omniauth_authorize_path(:user, :twitter) %></p>
+					<%= render "log_in_form" %>
 				</div>
 			</div>
 		</fieldset>
