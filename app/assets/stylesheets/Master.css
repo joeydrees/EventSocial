@@ -42,6 +42,7 @@ body {
     border-color: #FF7D00 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) !important;
 }
 
+
 /* --- Home Page Styles --- */
 .home-panel {
 	margin-top: 20px;
@@ -94,12 +95,12 @@ body {
 .sign-up-content input {
 	margin-bottom: 30px !important;
 }
-.already-user {
+.already-user, .not-user {
 	margin-top: 10px;
 }
-.already-user a {
+.already-user a, .not-user a {
 	color:#2274A5;
 }
-.already-user a:hover, .already-user a:active {
+.already-user a:hover, .already-user a:active, .not-user a:hover, .not-user a:active {
 	color:#FF7D00;
 }

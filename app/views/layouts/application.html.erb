@@ -45,6 +45,10 @@
                   </ul>
               </li>
             </ul>
+          <% else %>
+            <ul class="right">
+              <li><%= link_to "Log In", new_session_path(resource_name), method: :get %></li>
+            </ul>
           <% end %>
         </section>
       </nav>
