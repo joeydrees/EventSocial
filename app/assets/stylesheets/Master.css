@@ -11,10 +11,10 @@ body {
  */
 
 /* --- Nav Bar Styles --- */
-.title-area h1 {
-	color: #FF7D00;
+.title-area h1 a {
+	color: #FF7D00 !important;
 	padding: 0 5px 0 5px !important;
-	font-weight: bold;
+	font-weight: bold !important;
 	background-color: #2274A5;
 }
 .top-bar, .top-bar-section li:not(.has-form) a:not(.button) {
@@ -84,6 +84,17 @@ body {
 .twitter-login {
 	display: block;
 	margin:0 auto 0 auto;
+}
+.home-profile .button, .home-events .button {
+	background-color: #2274A5 !important;
+	color: #FF7D00 !important;
+	display: block !important;
+	margin: 0 auto 15px auto !important;
+	font-weight: bold !important;
+}
+.home-profile .button:hover, .home-events .button:hover {
+	background-color: #FF7D00 !important;
+	color: #2274A5 !important;
 }
 
 /* --- Sign Up Page Styles --- */

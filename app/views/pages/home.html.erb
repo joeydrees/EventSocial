@@ -6,24 +6,48 @@
 			<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h6>
 		</div>
 	</div>
-	<div class="small-12 medium-6 columns">
-		<fieldset class="home-login" data-equalizer-watch>
-			<legend>Sign Up</legend>
-			<div class="row">
-				<div class="small-12 medium-8 medium-centered columns">
-					<%= render "sign_up_form" %>
+	<% if user_signed_in? %>
+		<div class="small-12 medium-6 columns">
+			<fieldset class="home-profile" data-equalizer-watch>
+				<legend>My Profile</legend>
+				<div class="row">
+					<div class="small-12 medium-8 medium-centered columns">
+						<%= link_to "Edit My Profile", "#", method: :get, class: "button" %>
+					</div>
 				</div>
-			</div>
-		</fieldset>
-	</div>
-	<div class="small-12 medium-6 columns">
-		<fieldset class="home-twitter" data-equalizer-watch>
-			<legend>Log In</legend>
-			<div class="row">
-				<div class="small-12 medium-8 medium-centered columns">
-					<%= render "log_in_form" %>
+			</fieldset>
+		</div>
+		<div class="small-12 medium-6 columns">
+			<fieldset class="home-events" data-equalizer-watch>
+				<legend>My Events</legend>
+				<div class="row">
+					<div class="small-12 medium-8 medium-centered columns">
+						<%= link_to "View My Events", "#", method: :get, class: "button" %>
+						<%= link_to "Manage My Events", "#", method: :get, class: "button" %>
+					</div>
 				</div>
-			</div>
-		</fieldset>
-	</div>
+			</fieldset>
+		</div>
+	<% else %>
+		<div class="small-12 medium-6 columns">
+			<fieldset class="home-login" data-equalizer-watch>
+				<legend>Sign Up</legend>
+				<div class="row">
+					<div class="small-12 medium-8 medium-centered columns">
+						<%= render "sign_up_form" %>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="small-12 medium-6 columns">
+			<fieldset class="home-signup" data-equalizer-watch>
+				<legend>Log In</legend>
+				<div class="row">
+					<div class="small-12 medium-8 medium-centered columns">
+						<%= render "log_in_form" %>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	<% end %>
 </div>
