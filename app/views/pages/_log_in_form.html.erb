@@ -16,8 +16,9 @@
 	<% end -%>
 
 	<div class="actions">
-	<%= f.submit "Log in", :class => "button" %>
+	<%= f.submit "Log in", :class => "button small login-button" %>
 	</div>
 <% end %>
 
-<p>Or <%= link_to image_tag("sign-in-with-twitter.png", :alt => 'Sign In With Twitter', :class => 'twitter-login'), omniauth_authorize_path(:user, :twitter) %></p>
+<p class="text-center">Or</p>
+<%= link_to image_tag("sign-in-with-twitter.png", :alt => 'Sign In With Twitter', :class => 'twitter-login'), omniauth_authorize_path(:user, :twitter) %>
