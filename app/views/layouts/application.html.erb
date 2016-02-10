@@ -14,22 +14,37 @@
 
   <body>
 
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "Event Social", root_path, method: :get %></h1>
-        </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <div class="sticky">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1>Event Social</h1>
+          </li>
+           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
-      </section>
-    </nav>
+
+        <section class="top-bar-section">
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li><%= link_to "Tweets", root_path, method: :get %></li>
+            <li><%= link_to "Comments Board", "#", method: :get %></li>
+            <li><%= link_to "My Events", "#", method: :get %></li>
+          </ul>
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="has-dropdown">
+                <a href="#">My Profile</a>
+                <ul class="dropdown">
+                    <li><%= link_to "Manage Events", "#", method: :get %></li>
+                    <li><%= link_to "Edit Profile", "#", method: :get %></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
 
     <%= yield %>
 
