@@ -26,22 +26,26 @@
 
         <section class="top-bar-section">
           <!-- Left Nav Section -->
-          <ul class="left">
-            <li><%= link_to "Tweets", tweets_path, method: :get %></li>
-            <li><%= link_to "Comments Board", "#", method: :get %></li>
-            <li><%= link_to "My Events", "#", method: :get %></li>
-          </ul>
+          <% if user_signed_in? %>
+            <ul class="left">
+              <li><%= link_to "Tweets", tweets_path, method: :get %></li>
+              <li><%= link_to "Comments Board", "#", method: :get %></li>
+              <li><%= link_to "My Events", "#", method: :get %></li>
+            </ul>
+          <% end %>
           <!-- Right Nav Section -->
-          <ul class="right">
-            <li class="has-dropdown">
-                <a href="#">My Profile</a>
-                <ul class="dropdown">
-                    <li><%= link_to "Manage Events", "#", method: :get %></li>
-                    <li><%= link_to "Edit Profile", "#", method: :get %></li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                </ul>
-            </li>
-          </ul>
+          <% if user_signed_in? %>
+            <ul class="right">
+              <li class="has-dropdown">
+                  <a href="#">My Profile</a>
+                  <ul class="dropdown">
+                      <li><%= link_to "Manage Events", "#", method: :get %></li>
+                      <li><%= link_to "Edit Profile", "#", method: :get %></li>
+                      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+              </li>
+            </ul>
+          <% end %>
         </section>
       </nav>
     </div>
