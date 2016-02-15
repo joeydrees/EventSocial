@@ -36,6 +36,7 @@
           <!-- Right Nav Section -->
           <% if user_signed_in? %>
             <ul class="right">
+              <li><a href="#">Signed in as <%= current_user.username %></a></li>
               <li class="has-dropdown">
                   <a href="#">My Profile</a>
                   <ul class="dropdown">
@@ -52,6 +53,12 @@
           <% end %>
         </section>
       </nav>
+    </div>
+
+    <div class="row">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "alert-box #{key}" %>
+      <% end %>
     </div>
 
     <%= yield %>
