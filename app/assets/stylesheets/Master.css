@@ -134,8 +134,9 @@ body {
 .mobile-events-menu .left-small {
 	border:none !important;
 }
-.display-tweets-mobile {
-	
+.display-tweets-mobile .twitter-tweet {
+	display: block;
+	margin: 0 auto 0 auto;
 }
 
 /* --- Tweets Page Styles (Desktop) --- */
