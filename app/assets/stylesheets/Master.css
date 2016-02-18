@@ -134,6 +134,9 @@ body {
 .mobile-events-menu .left-small {
 	border:none !important;
 }
+.display-tweets-mobile {
+	
+}
 
 /* --- Tweets Page Styles (Desktop) --- */
 .off-canvas-wrap, .off-canvas-wrap > .inner-wrap {
@@ -154,4 +157,25 @@ body {
 }
 .events-off-canvas {
 	text-align: left !important;
+	margin-top: 15px;
+}
+.events-list li a {
+	color: #2274A5 !important;
+}
+.events-list li a:hover, .events-list li a:active {
+	color: #FF7D00 !important;
+}
+.subscribe-button {
+	background-color: #2274A5 !important;
+	color: #FF7D00 !important;
+	display: block !important;
+	margin: 15px auto 5px auto !important;
+	font-weight: bold !important;
+}
+.subscribe-button:hover, .subscribe-button:active {
+	background-color: #FF7D00 !important;
+	color: #2274A5 !important;
+}
+.display-tweets {
+
 }
