@@ -37,7 +37,11 @@
           <% if user_signed_in? %>
             <ul class="right">
               <li class="has-dropdown">
-                  <a href="#">My Profile</a>
+                <% if current_user.provider.blank? %>
+                  <a href="#"><%= current_user.email %></a>
+                <% else %>
+                  <a href="#"><%= current_user.username %></a>
+                <% end %>
                   <ul class="dropdown">
                       <li><%= link_to "Manage Events", "#", method: :get %></li>
                       <li><%= link_to "Edit Profile", "#", method: :get %></li>
@@ -52,6 +56,12 @@
           <% end %>
         </section>
       </nav>
+    </div>
+
+    <div class="row">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "alert-box #{key}" %>
+      <% end %>
     </div>
 
     <%= yield %>
