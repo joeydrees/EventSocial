@@ -8,7 +8,7 @@
 
     <aside class="left-off-canvas-menu" data-equalizer-watch>
       <ul class="off-canvas-list">
-      	<li><a href="#">Subscribe to New Event</a></li>
+      	<li><a href="#" data-reveal-id="subscribeModal">Subscribe to New Event</a></li>
         <li><label>My Subscribed Events</label></li>
         <li><a href="#">#Event1</a></li>
         <li><a href="#">#Event2</a></li>
@@ -40,7 +40,7 @@
 
 <div class="row show-for-medium-up">
 	<div class="medium-3 columns">
-		<a href="#" class="button small subscribe-button">Subscribe to New Event</a>
+		<a href="#" class="button small subscribe-button" data-reveal-id="subscribeModal">Subscribe to New Event</a>
 		<ul class="side-nav events-list">
 			<li class="active"><a href="#">#Event1</a></li>
 	        <li><a href="#">#Event2</a></li>
@@ -56,5 +56,17 @@
 		<% end %>
 		<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">He may be considering retirement, but this will remain one of my favorite plays ever. <a href="https://t.co/x147HqKazS">https://t.co/x147HqKazS</a></p>&mdash; Brett Taylor (@BleacherNation) <a href="https://twitter.com/BleacherNation/status/699650377176715264">February 16, 2016</a></blockquote>
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+
+	<div id="subscribeModal" class="reveal-modal subscribe-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		<div class="row">
+			<div class="small-12 columns">
+				<h2 id="modalTitle" class="text-center">Subscribe to New Event</h2>
+				<p class="text-center">Enter the hashtag of an event.</p>
+				<input type="text" id="new-event-subscribe" placeholder="Event Hashtag" />
+				<a href="#" class="button small subscribe-button" data-reveal-id="subscribeModal">Subscribe to Event</a>
+			</div>
+		</div>
+	  	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 	</div>
 </div>

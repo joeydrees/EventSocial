@@ -163,7 +163,7 @@ body {
 .events-list li a {
 	color: #2274A5 !important;
 }
-.events-list li a:hover, .events-list li a:active {
+.events-list li a:hover, .events-list li.active > a:first-child:not(.button) {
 	color: #FF7D00 !important;
 }
 .subscribe-button {
@@ -179,4 +179,17 @@ body {
 }
 .display-tweets {
 
+}
+@media only screen and (min-width: 40.063em) { /* medium and up screens only */
+	.subscribe-modal {
+		width: 45% !important;
+	}
+	.subscribe-modal .subscribe-button {
+	width: 50% !important;
+	}
+	.subscribe-modal input {
+		width: 75% !important;
+		display: block !important;
+		margin: 0 auto 0 auto !important;
+	}
 }
