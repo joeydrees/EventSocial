@@ -1,53 +1,56 @@
 body {
-	background: #FFFFFF !important;
+	background: #F1F1F1 !important;
 }
 
 /* ---COLOR SCHEME --- */
 /* 
 	blue - #2274A5
-	orange - #FF7D00
+	green - #7FB800
  	white - #FFFFFF
+ 	light gray - #F1F1F1
  */
 
 /* --- Nav Bar Styles --- */
 .title-area h1 a {
-	color: #FF7D00 !important;
+	color: #2274A5 !important;
 	padding: 0 5px 0 5px !important;
 	font-weight: bold !important;
-	background-color: #2274A5;
+	background-color: #FFFFFF;
 }
 .top-bar, .top-bar-section li:not(.has-form) a:not(.button) {
-	background: #2274A5 !important;
-	color: #FFFFFF;
+	background: #FFFFFF !important;
 	font-weight: bold;
 }
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-	background-color: #FF7D00 !important;
-	color: #FFFFFF;
+	background-color: #2274A5 !important;
+	color: #F1F1F1;
 }
 .top-bar.expanded .toggle-topbar a, .top-bar .toggle-topbar.menu-icon a {
-	color: #FFFFFF !important;
+	color: #2274A5 !important;
 }
 .top-bar-section li:not(.has-form) a:not(.button):not(:hover) {
-	color: #FFFFFF !important;
+	color: #2274A5 !important;
 }
 .top-bar .toggle-topbar.menu-icon a span::after {
-    box-shadow: 0 0 0 1px #FFFFFF, 0 7px 0 1px #FFFFFF, 0 14px 0 1px #FFFFFF !important;
+    box-shadow: 0 0 0 1px #2274A5, 0 7px 0 1px #2274A5, 0 14px 0 1px #2274A5 !important;
 }
 .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
-	color: #FFFFFF !important;
+	color: #F1F1F1 !important;
 }
 .top-bar-section .has-dropdown > a:after {
-    border-color: #FF7D00 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) !important;
+    border-color: #2274A5 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) !important;
+}
+.top-bar-section .has-dropdown:hover > a:after {
+    border-color: #F1F1F1 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) !important;
 }
 .top-bar h1 {
-	background: #2274A5 !important;
+	background: #FFFFFF !important;
 }
 
 /* --- Home Page Styles --- */
 .home-panel {
 	margin-top: 20px;
-	border: 2px solid #FF7D00 !important;
+	border: 2px solid #7FB800 !important;
 	background: #2274A5 !important;
 }
 .home-panel h2 {
@@ -65,21 +68,21 @@ body {
 	margin: 0 auto 10px auto;
 }
 .home-content fieldset {
-	border: 3px solid #FF7D00;
+	border: 3px solid #7FB800;
 }
 .home-content legend {
 	color: #2274A5;
 }
 .login-button, .signup-button {
 	background-color: #2274A5 !important;
-	color: #FF7D00 !important;
+	color: #7FB800 !important;
 	display: block !important;
 	margin: 0 auto 15px auto !important;
 	width: 60% !important;
 	font-weight: bold !important;
 }
 .login-button:hover, .signup-button:hover, .login-button:active, .signup-button:active {
-	background-color: #FF7D00 !important;
+	background-color: #7FB800 !important;
 	color: #2274A5 !important;
 }
 .twitter-login {
@@ -88,13 +91,13 @@ body {
 }
 .home-profile .button, .home-events .button {
 	background-color: #2274A5 !important;
-	color: #FF7D00 !important;
+	color: #7FB800 !important;
 	display: block !important;
 	margin: 0 auto 15px auto !important;
 	font-weight: bold !important;
 }
 .home-profile .button:hover, .home-events .button:hover {
-	background-color: #FF7D00 !important;
+	background-color: #7FB800 !important;
 	color: #2274A5 !important;
 }
 
@@ -102,7 +105,7 @@ body {
 .sign-up-content h2 {
 	text-align: center;
 	font-weight: bold;
-	color: #FF7D00 !important;
+	color: #7FB800 !important;
 }
 .sign-up-content input {
 	margin-bottom: 30px !important;
@@ -114,7 +117,7 @@ body {
 	color:#2274A5;
 }
 .already-user a:hover, .already-user a:active, .not-user a:hover, .not-user a:active {
-	color:#FF7D00;
+	color:#7FB800;
 }
 
 /* --- Tweets Page Styles (Mobile) --- */
@@ -164,17 +167,17 @@ body {
 	color: #2274A5 !important;
 }
 .events-list li a:hover, .events-list li.active > a:first-child:not(.button) {
-	color: #FF7D00 !important;
+	color: #7FB800 !important;
 }
 .subscribe-button {
 	background-color: #2274A5 !important;
-	color: #FF7D00 !important;
+	color: #7FB800 !important;
 	display: block !important;
 	margin: 15px auto 5px auto !important;
 	font-weight: bold !important;
 }
 .subscribe-button:hover, .subscribe-button:active {
-	background-color: #FF7D00 !important;
+	background-color: #7FB800 !important;
 	color: #2274A5 !important;
 }
 .display-tweets {
