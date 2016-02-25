@@ -38,9 +38,9 @@
             <ul class="right">
               <li class="has-dropdown">
                 <% if current_user.provider.blank? %>
-                  <a href="#"><%= current_user.email %></a>
+                  <a href="#" style="padding-right: 50px !important;"><%= current_user.email %></a>
                 <% else %>
-                  <a href="#"><%= current_user.username %></a>
+                  <a href="#" style="padding-right: 50px !important;"><%= current_user.username %></a>
                 <% end %>
                   <ul class="dropdown">
                       <li><%= link_to "Manage Events", "#", method: :get %></li>

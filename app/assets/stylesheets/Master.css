@@ -8,6 +8,7 @@ body {
 	green - #7FB800
  	white - #FFFFFF
  	light gray - #F1F1F1
+ 	dark gray - #404041
  */
 
 /* --- Nav Bar Styles --- */
@@ -17,12 +18,10 @@ body {
 	font-weight: bold !important;
 	background-color: #FFFFFF;
 }
-
 .brand-nav {
 	width: 150px;
 	margin-bottom: 7.3px;
 }
-
 .top-bar, .top-bar-section li:not(.has-form) a:not(.button) {
 	background: #FFFFFF !important;
 	font-weight: bold;
@@ -96,7 +95,7 @@ body {
 	background-color: #2274A5 !important;
 	color: #7FB800 !important;
 	display: block !important;
-	margin: 0 auto 15px auto !important;
+	margin: 16px auto 15px auto !important;
 	width: 60% !important;
 	font-weight: bold !important;
 }
@@ -151,7 +150,6 @@ body {
 }
 .mobile-events-menu a.menu-icon {
 	background-color: #FFFFFF !important;
-	margin:5px 0 0 5px;
 }
 .mobile-events-menu .left-small {
 	border:none !important;
@@ -159,6 +157,15 @@ body {
 .display-tweets-mobile .twitter-tweet {
 	display: block;
 	margin: 0 auto 0 auto;
+}
+.left-off-canvas-menu {
+	background: #404041 !important;
+}
+ul.off-canvas-list li label {
+	color: #F1F1F1 !important;
+}
+ul.off-canvas-list li a {
+	color: #7FB800 !important;
 }
 
 /* --- Tweets Page Styles (Desktop) --- */
@@ -173,14 +180,15 @@ body {
 }
 .mobile-events-menu a.menu-icon {
 	background-color: #FFFFFF !important;
-	margin:5px 0 0 5px;
 }
 .mobile-events-menu .left-small {
 	border:none !important;
 }
 .events-off-canvas {
 	text-align: left !important;
-	margin-top: 15px;
+	margin-top: 11px;
+	color: #2274A5;
+	font-weight: bold;
 }
 .events-list li a {
 	color: #2274A5 !important;
@@ -198,9 +206,6 @@ body {
 .subscribe-button:hover, .subscribe-button:active {
 	background-color: #7FB800 !important;
 	color: #2274A5 !important;
-}
-.display-tweets {
-
 }
 @media only screen and (min-width: 40.063em) { /* medium and up screens only */
 	.subscribe-modal {

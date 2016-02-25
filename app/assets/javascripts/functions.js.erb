@@ -1,13 +1,13 @@
 $(document).ready(function(){
-	$('#brand').mouseover(function(){
-		var imgSrc = $(this).attr("src")
-		var newSrc = imgSrc.replace("Event-Social-Brand.png", "Event-Social-Brand-Hover.png")
+	$('#brand').mouseover(function() {
+		var imgSrc = $(this).attr("src");
+		var newSrc = imgSrc.replace("/assets/Event-Social-Brand-4ed14188c4204580eaadc81267073a55d999ed1b7a798b756257cdb8de229369.png", "/assets/Event-Social-Brand-Hover-cbb12b35fef21acd9d3fa3f7adb82512df6a91e693a13c94449cec511df1704c.png");
 		$(this).attr("src", newSrc);
 	});
 
-	$('#brand').mouseout(function(){
-		var imgSrc = $(this).attr("src")
-		var newSrc = imgSrc.replace("Event-Social-Brand-Hover.png", "Event-Social-Brand.png")
+	$('#brand').mouseout(function() {
+		var imgSrc = $(this).attr("src");
+		var newSrc = imgSrc.replace("/assets/Event-Social-Brand-Hover-cbb12b35fef21acd9d3fa3f7adb82512df6a91e693a13c94449cec511df1704c.png", "/assets/Event-Social-Brand-4ed14188c4204580eaadc81267073a55d999ed1b7a798b756257cdb8de229369.png");
 		$(this).attr("src", newSrc);
 	});
 });
