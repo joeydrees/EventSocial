@@ -9,16 +9,6 @@
 	</div>
 	<% if user_signed_in? %>
 		<div class="small-12 medium-6 columns">
-			<fieldset class="home-profile" data-equalizer-watch>
-				<legend>My Profile</legend>
-				<div class="row">
-					<div class="small-12 medium-8 medium-centered columns">
-						<%= link_to "Edit My Profile", "#", method: :get, class: "button" %>
-					</div>
-				</div>
-			</fieldset>
-		</div>
-		<div class="small-12 medium-6 columns">
 			<fieldset class="home-events" data-equalizer-watch>
 				<legend>My Events</legend>
 				<div class="row">
@@ -29,23 +19,33 @@
 				</div>
 			</fieldset>
 		</div>
-	<% else %>
 		<div class="small-12 medium-6 columns">
-			<fieldset class="home-login" data-equalizer-watch>
-				<legend>Sign Up</legend>
+			<fieldset class="home-profile" data-equalizer-watch>
+				<legend>My Profile</legend>
 				<div class="row">
 					<div class="small-12 medium-8 medium-centered columns">
-						<%= render "sign_up_form" %>
+						<%= link_to "Edit My Profile", "#", method: :get, class: "button" %>
 					</div>
 				</div>
 			</fieldset>
 		</div>
+	<% else %>
 		<div class="small-12 medium-6 columns">
 			<fieldset class="home-signup" data-equalizer-watch>
 				<legend>Log In</legend>
 				<div class="row">
 					<div class="small-12 medium-8 medium-centered columns">
 						<%= render "log_in_form" %>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="small-12 medium-6 columns">
+			<fieldset class="home-login" data-equalizer-watch>
+				<legend>Sign Up</legend>
+				<div class="row">
+					<div class="small-12 medium-8 medium-centered columns">
+						<%= render "sign_up_form" %>
 					</div>
 				</div>
 			</fieldset>
