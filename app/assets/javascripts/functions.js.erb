@@ -1,0 +1,13 @@
+$(document).ready(function(){
+	$('#brand').mouseover(function(){
+		var imgSrc = $(this).attr("src")
+		var newSrc = imgSrc.replace("Event-Social-Brand.png", "Event-Social-Brand-Hover.png")
+		$(this).attr("src", newSrc);
+	});
+
+	$('#brand').mouseout(function(){
+		var imgSrc = $(this).attr("src")
+		var newSrc = imgSrc.replace("Event-Social-Brand-Hover.png", "Event-Social-Brand.png")
+		$(this).attr("src", newSrc);
+	});
+});

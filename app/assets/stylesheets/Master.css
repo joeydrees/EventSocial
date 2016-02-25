@@ -17,6 +17,12 @@ body {
 	font-weight: bold !important;
 	background-color: #FFFFFF;
 }
+
+.brand-nav {
+	width: 150px;
+	margin-bottom: 7.3px;
+}
+
 .top-bar, .top-bar-section li:not(.has-form) a:not(.button) {
 	background: #FFFFFF !important;
 	font-weight: bold;
@@ -47,28 +53,41 @@ body {
 	background: #FFFFFF !important;
 }
 
+/* --- Alerts Styles --- */
+.alert-box {
+    margin-bottom: 0px !important;
+    width: 97%;
+    display: block !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alert-box.notice {
+	background-color: #2274A5 !important;
+}
+
 /* --- Home Page Styles --- */
 .home-panel {
 	margin-top: 20px;
 	border: 2px solid #7FB800 !important;
-	background: #2274A5 !important;
+	background: #FFFFFF !important;
 }
 .home-panel h2 {
 	text-align: center;
 	font-weight: bold;
-	color: #FFFFFF !important;
+	color: #2274A5 !important;
 }
 .home-panel h6 {
 	text-align: center;
-	color: #FFFFFF !important;
+	color: #2274A5 !important;
 }
 .home-panel img {
-	width: 300px;
+	width: 500px;
 	display: block;
 	margin: 0 auto 10px auto;
 }
 .home-content fieldset {
 	border: 3px solid #7FB800;
+	background: #FFFFFF; 
 }
 .home-content legend {
 	color: #2274A5;
