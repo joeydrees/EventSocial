@@ -1,6 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #Twitter API environment variables
+  $twitter = Twitter::REST::Client.new do |config|
+    config.consumer_key = ENV["DEV_TWITTER_CONSUMER_KEY"]
+    config.consumer_secret = ENV["DEV_TWITTER_CONSUMER_SECRET"]
+    config.access_token = ENV["DEV_TWITTER_ACCESS_TOKEN"]
+    config.access_token_secret = ENV["DEV_TWITTER_ACCESS_TOKEN_SECRET"]
+  end
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
