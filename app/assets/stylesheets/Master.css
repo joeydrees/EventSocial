@@ -2,6 +2,12 @@ body {
 	background: #F1F1F1 !important;
 }
 
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /* ---COLOR SCHEME --- */
 /* 
 	blue - #2274A5
@@ -219,4 +225,37 @@ ul.off-canvas-list li a {
 		display: block !important;
 		margin: 0 auto 0 auto !important;
 	}
+}
+
+/* --- My Events Page Styles --- */
+.accordion .accordion-navigation > a, .accordion dd > a {
+	background: #2274A5 !important;
+	color: #F1F1F1 !important;
+	border-bottom: 1px solid #F1F1F1;
+}
+.accordion .accordion-navigation > a:hover, .accordion dd > a:hover {
+	background: #7FB800 !important;
+}
+.my-event-image {
+	margin-bottom: 10px;
+}
+.unsubscribe-button {
+	background-color: #2274A5 !important;
+	color: #7FB800 !important;
+	display: block !important;
+	margin: 15px auto 5px auto !important;
+	font-weight: bold !important;
+	width: 65% !important;
+}
+@media only screen and (min-width: 48.063em) { /* medium and up screens only */
+	.unsubscribe-button {
+		width: 30% !important;
+	}
+}
+.unsubscribe-button:hover, .unsubscribe-button:active {
+	background-color: #7FB800 !important;
+	color: #2274A5 !important;
+}
+.settings-icon {
+	width: 40px;
 }

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
              controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: "users/registrations",
                            passwords: "users/passwords", sessions: "users/sessions" }
 
-  resources :tweets 
+  resources :tweets
+
+  resources :my_events
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
