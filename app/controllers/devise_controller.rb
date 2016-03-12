@@ -15,6 +15,9 @@ class DeviseController < Devise.parent_controller.constantize
   prepend_before_action :assert_is_devise_resource!
   respond_to :html if mimes_for_respond_to.empty?
 
+  def subscriptions
+  end
+
   # Override prefixes to consider the scoped view.
   # Notice we need to check for the request due to a bug in
   # Action Controller tests that forces _prefixes to be

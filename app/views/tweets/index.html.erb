@@ -7,15 +7,7 @@
     </nav>
 
     <aside class="left-off-canvas-menu" data-equalizer-watch>
-      <ul class="off-canvas-list">
-      	<li><a href="#" data-reveal-id="subscribeModal">Subscribe to New Event</a></li>
-        <li><label>My Subscribed Events</label></li>
-        <li><a href="#">#Event1</a></li>
-        <li><a href="#">#Event2</a></li>
-        <li><a href="#">#Event3</a></li>
-        <li><a href="#">#Event4</a></li>
-        <li><a href="#">#Event5</a></li>
-      </ul>
+    	<%= render 'events/events_sidebar_mobile' %>
     </aside>
 
     <section class="middle tab-bar-section">
@@ -39,14 +31,7 @@
 
 <div class="row show-for-medium-up">
 	<div class="medium-3 columns">
-		<a href="#" class="button small subscribe-button" data-reveal-id="subscribeModal">Subscribe to New Event</a>
-		<ul class="side-nav events-list">
-			<li class="active"><a href="#">#Event1</a></li>
-	        <li><a href="#">#Event2</a></li>
-	        <li><a href="#">#Event3</a></li>
-	        <li><a href="#">#Event4</a></li>
-	        <li><a href="#">#Event5</a></li>
-		</ul>
+		<%= render 'events/events_sidebar' %>
 	</div>
 	<div class="medium-9 columns display-tweets-desktop">
 		<% @tweetsArray.each do |tweet| %> 
@@ -56,11 +41,23 @@
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
 
+	<div id="createModal" class="reveal-modal subscribe-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		<div class="row">
+			<div class="small-12 columns">
+				<h2 id="modalTitle" class="text-center">Create New Event</h2>
+				<p class="text-center">Enter the hashtag for your Event.</p>
+				<input type="text" id="new-event-subscribe" placeholder="Event Hashtag" />
+				<a href="#" class="button small subscribe-button" data-reveal-id="createModal">Create New Event</a>
+			</div>
+		</div>
+	  	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	</div>
+
 	<div id="subscribeModal" class="reveal-modal subscribe-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 		<div class="row">
 			<div class="small-12 columns">
-				<h2 id="modalTitle" class="text-center">Subscribe to New Event</h2>
-				<p class="text-center">Enter the hashtag of an event.</p>
+				<h2 id="modalTitle" class="text-center">Subscribe To An Event</h2>
+				<p class="text-center">Enter the hashtag of an event already created.</p>
 				<input type="text" id="new-event-subscribe" placeholder="Event Hashtag" />
 				<a href="#" class="button small subscribe-button" data-reveal-id="subscribeModal">Subscribe to Event</a>
 			</div>

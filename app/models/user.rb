@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :events, foreign_key: "user_id"
+
+  has_many :subscriptions, through: :active_relationships, source: :subscribed
+  has_many :active_relationships, class_name:  "Subscription", foreign_key: "subscriber_id", dependent: :destroy
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,12 +29,27 @@ class User < ActiveRecord::Base
   	end
   end
 
+  # Subscribes to an event.
+  def subscribe(event)
+    active_relationships.create(subscribed_id: event.id)
+  end
+
+  # Unsubscribes to an event.
+  def unsubscribe(event)
+    active_relationships.find_by(subscribed_id: event.id).destroy
+  end
+
+  # Returns true if the current user is subscribed to the event.
+  def subscribed?(event)
+    subscriptions.include?(event)
+  end
+
   def email_required?
     super && provider.blank?
   end
 
   def password_required?
-  	super && provider.blank?
+    super && provider.blank?
   end
 
   def update_with_email(params, *options)
