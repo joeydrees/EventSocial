@@ -3,8 +3,10 @@ Rails.application.routes.draw do
              controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: "users/registrations",
                            passwords: "users/passwords", sessions: "users/sessions" }
 
-  get '/users/:id/subscriptions' => 'users#subscriptions'
+  get '/events/:id/subscriptions' => 'events#subscriptions'
   get '/events/:id/subscribers' => 'events#subscribers'
+  get '/events/:id/subscribe' => 'events#subscribe'
+  get '/events/:id/unsubscribe' => 'events#unsubscribe'
 
   resources :tweets
 

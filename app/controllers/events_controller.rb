@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
 
 	def index
+		@user = User.find(current_user.id)
+		@events = Event.where(user_id: @user.id)
+
 	end
 
 	def new
@@ -20,7 +23,22 @@ class EventsController < ApplicationController
 	end
 
 	def show
+		@user = User.find(params[:id])
 		@event = Event.find(params[:id])
+	end
+
+	def subscribe
+		@event = Event.find(params[:id])
+		@user = User.find(current_user.id)
+		@user.subscribe(@event)
+		redirect_to event_path
+	end
+
+	def unsubscribe
+		@event = Event.find(params[:id])
+		@user = User.find(current_user.id)
+		@user.unsubscribe(@event)
+		redirect_to event_path
 	end
 
 	def subscribers
@@ -29,12 +47,13 @@ class EventsController < ApplicationController
 	    @subscribers = @event.susbscribers
 	end
 
-	private
-	    # Use callbacks to share common setup or constraints between actions.
-	    def set_comment
-	      @event = Event.find(params[:id])
-	    end
+	def subscriptions
+		@title = "Subscriptions"
+		@event  = Event.find(params[:id])
+	    @subscriptions = @event.susbscriptions
+	end
 
+	private
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def event_params
 	      params.require(:event).permit(:name, :event_date, :event_time, :description)

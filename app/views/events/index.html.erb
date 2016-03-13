@@ -2,28 +2,30 @@
 	<div class="small-12 columns">
 		<h2>My Events</h2>
 		<ul class="accordion" data-accordion>
-  			<li class="accordion-navigation">
-		    <a href="#panel1a">Event 1</a>
-		    <div id="panel1a" class="content">
-		    	<div class="row">
-			    	<div class="small-12 columns">
-			    		<p>Event Description - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    	</div>
-			      	<div class="small-12 columns">
-			      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="Event 1" />
-			      	</div>
-			      	<div class="small-12 columns">
-			      		<p class="text-center">#EventHashtag<br />
-			      								Event Date: 01/01/2016<br />
-			      								Number of Guests: 100</p>
-			      		<div class="event-owner">
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Unsubscribe From Event</a>
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Edit Event</a>
-			      		</div>
-			      	</div>
+			<% @events.each do |event| %>
+	  			<li class="accordion-navigation">
+			    <a href="#panel<%= event.id %>a"><%= event.name %></a>
+			    <div id="panel<%= event.id %>a" class="content">
+			    	<div class="row">
+				    	<div class="small-12 columns">
+				    		<p>Event Description - <%= event.description %></p>
+				    	</div>
+				      	<div class="small-12 columns">
+				      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
+				      	</div>
+				      	<div class="small-12 columns">
+				      		<p class="text-center">#EventHashtag<br />
+				      								Event Date: <%= event.event_date %><br />
+				      								Number of Guests: 100</p>
+				      		<div class="event-owner">
+				      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Unsubscribe From Event</a>
+				      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Edit Event</a>
+				      		</div>
+				      	</div>
+				    </div>
 			    </div>
-		    </div>
-		  </li>
+			  	</li>
+		  	<% end %>
 		  <li class="accordion-navigation">
 		    <a href="#panel2a">Event 2</a>
 		    <div id="panel2a" class="content">
@@ -48,49 +50,6 @@
 		  <li class="accordion-navigation">
 		    <a href="#panel3a">Event 3</a>
 		    <div id="panel3a" class="content">
-		      	<div class="row">
-			    	<div class="small-12 columns">
-			    		<p>Event Description - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    	</div>
-			      	<div class="small-12 columns">
-			      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="Event 1" />
-			      	</div>
-			      	<div class="small-12 columns">
-			      		<p class="text-center">#EventHashtag<br />
-			      								Event Date: 01/01/2016<br />
-			      								Number of Guests: 100</p>
-			      		<div class="event-owner">
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Unsubscribe From Event</a>
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Edit Event</a>
-			      		</div>
-			      	</div>
-			    </div>
-		    </div>
-		  </li>
-		  <li class="accordion-navigation">
-		    <a href="#panel4a">Event 4</a>
-		    <div id="panel4a" class="content">
-		      	<div class="row">
-			    	<div class="small-12 columns">
-			    		<p>Event Description - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    	</div>
-			      	<div class="small-12 columns">
-			      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="Event 1" />
-			      	</div>
-			      	<div class="small-12 columns">
-			      		<p class="text-center">#EventHashtag<br />
-			      								Event Date: 01/01/2016<br />
-			      								Number of Guests: 100</p>
-			      		<div class="not-event-owner">
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Unsubscribe From Event</a>
-			      		</div>
-			      	</div>
-			    </div>
-		    </div>
-		  </li>
-		  <li class="accordion-navigation">
-		    <a href="#panel5a">Event 5</a>
-		    <div id="panel5a" class="content">
 		      	<div class="row">
 			    	<div class="small-12 columns">
 			    		<p>Event Description - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

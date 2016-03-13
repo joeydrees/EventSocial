@@ -1,3 +1,6 @@
+<%= link_to "Subscribe", "/events/#{@event.id}/subscribe", method: :get, class: "button" %>
+<%= link_to "Unsubscribe", "/events/#{@event.id}/unsubscribe", method: :get, class: "button" %>
+
 <h3>
 	<strong>Event Name:</strong>
 	<%= @event.name %>
