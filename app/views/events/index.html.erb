@@ -15,7 +15,7 @@
 					      	</div>
 					      	<div class="small-12 columns">
 					      		<p class="text-center"><strong>#<%= event.name %></strong><br />
-					      								<strong>Event Date</strong>: <%= event.event_date.strftime("%B %-d, %Y") %><br />
+					      								<strong>Event Date</strong>: <%= event.event_date %><br />
 					      								<strong>Start Time</strong>: <%= event.event_time.strftime("%l:%M %p") %><br />
 					      								<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id: event.id).count %><br />
 					      								<% if current_user.email.blank? %>
