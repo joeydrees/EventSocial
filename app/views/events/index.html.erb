@@ -4,49 +4,30 @@
 		<ul class="accordion" data-accordion>
 			<% @events.each do |event| %>
 	  			<li class="accordion-navigation">
-			    <a href="#panel<%= event.id %>a"><%= event.name %></a>
-			    <div id="panel<%= event.id %>a" class="content">
-			    	<div class="row">
-				    	<div class="small-12 columns">
-				    		<p>Event Description - <%= event.description %></p>
-				    	</div>
-				      	<div class="small-12 columns">
-				      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
-				      	</div>
-				      	<div class="small-12 columns">
-				      		<p class="text-center">#EventHashtag<br />
-				      								Event Date: <%= event.event_date %><br />
-				      								Number of Subscribers: <%= Subscription.where(subscribed_id = event.id).count %></p>
-				      		<div class="event-owner">
-				      			<% if current_user.subscribed?(event) %>
-									<%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
-								<% end %>
-				      		</div>
-				      	</div>
+				    <a href="#panel<%= event.id %>a"><%= event.name %></a>
+				    <div id="panel<%= event.id %>a" class="content">
+				    	<div class="row">
+					    	<div class="small-12 columns">
+					    		<p><strong>Event Description</strong> - <%= event.description %></p>
+					    	</div>
+					      	<div class="small-12 columns">
+					      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
+					      	</div>
+					      	<div class="small-12 columns">
+					      		<p class="text-center"><strong>#<%= event.name %></strong><br />
+					      								<strong>Event Date</strong>: <%= event.event_date.strftime("%B %-d, %Y") %><br />
+					      								<strong>Start Time</strong>: <%= event.event_time.strftime("%l:%M %p") %><br />
+					      								<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id = event.id).count %></p>
+					      		<div class="event-owner">
+					      			<% if current_user.subscribed?(event) %>
+										<%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
+									<% end %>
+					      		</div>
+					      	</div>
+					    </div>
 				    </div>
-			    </div>
 			  	</li>
 		  	<% end %>
-		<li class="accordion-navigation">
-			<a href="#panel1a">Event 1</a>
-			<div id="panel1a" class="content">
-			  	<div class="row">
-			    	<div class="small-12 columns">
-			    		<p>Event Description - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    	</div>
-			      	<div class="small-12 columns">
-			      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="Event 1" />
-			      	</div>
-			      	<div class="small-12 columns">
-			      		<p class="text-center">#EventHashtag<br />
-			      								Event Date: 01/01/2016<br />
-			      								Number of Guests: 100</p>
-			      		<div class="not-event-owner">
-			      			<a href="#" class="button small unsubscribe-button" data-reveal-id="subscribeModal">Unsubscribe From Event</a>
-			      		</div>
-			      	</div>
-			    </div>
-			</div>
-		</li>
+		</ul>
 	</div>
 </div>
