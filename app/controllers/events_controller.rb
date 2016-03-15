@@ -3,7 +3,6 @@ class EventsController < ApplicationController
 	def index
 		@user = User.find(current_user.id)
 		@events = Event.where(user_id: @user.id)
-
 	end
 
 	def new
@@ -23,7 +22,7 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.find(current_user.id)
 		@event = Event.find(params[:id])
 	end
 

@@ -1,5 +1,8 @@
-<%= link_to "Subscribe", "/events/#{@event.id}/subscribe", method: :get, class: "button" %>
-<%= link_to "Unsubscribe", "/events/#{@event.id}/unsubscribe", method: :get, class: "button" %>
+<% if current_user.subscribed?(@event) %>
+	<%= link_to "Unsubscribe", "/events/#{@event.id}/unsubscribe", method: :get, class: "button" %>
+<% else %>
+	<%= link_to "Subscribe", "/events/#{@event.id}/subscribe", method: :get, class: "button" %>
+<% end %>
 
 <h3>
 	<strong>Event Name:</strong>
