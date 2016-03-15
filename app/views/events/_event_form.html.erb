@@ -16,11 +16,11 @@
 	</div>
 	<div class="field">
 		<h3><%= f.label :event_date %></h3>
-		<%= f.date_select :event_date, :order => [:month, :day, :year], :start_year => 2016, :end_year => 2021, :html=>{:class => "date-picker"} %>
+		<%= f.text_field :event_date, :id=>"dp1", :html=>{:class => "date-picker"} %>
 	</div>
 	<div class="field">
 		<h3><%= f.label :event_time %></h3>
-		<%= f.time_select :event_time, :combined => true, :default => Time.now, :minute_interval => 60, :time_separator => "", :start_hour => 0, :start_minute => 0, :end_hour => 23, :end_minute => 0, :ampm => true %>
+		<%= f.time_select :event_time, :combined => true, :default => Time.now, :minute_interval => 30, :time_separator => "", :start_hour => 0, :start_minute => 0, :end_hour => 23, :end_minute => 0, :ampm => true %>
 	</div>
 	<div class="field">
 		<h3><%= f.label :description %></h3>
@@ -30,5 +30,15 @@
 		<br>
 		<%= f.submit "Create Event", :class => "button small new-event-button" %>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#dp1').fdatepicker({
+				initialDate: '03-15-2016',
+				format: 'mm/dd/yyyy',
+				disableDblClickSelection: true
+			});
+		});
+	</script>
 
 <% end %>

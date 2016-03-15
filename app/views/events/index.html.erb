@@ -17,10 +17,18 @@
 					      		<p class="text-center"><strong>#<%= event.name %></strong><br />
 					      								<strong>Event Date</strong>: <%= event.event_date.strftime("%B %-d, %Y") %><br />
 					      								<strong>Start Time</strong>: <%= event.event_time.strftime("%l:%M %p") %><br />
-					      								<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id = event.id).count %></p>
+					      								<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id: event.id).count %><br />
+					      								<% if current_user.email.blank? %>
+					      									<strong>Event Manager</strong>: <%= User.where(user_id: event.user_id) %></p>
+					      								<% else %>
+					      									<strong>Event Manager</strong>: <%= User.where(user_id: event.user_id) %></p>
+					      								<% end %>
 					      		<div class="event-owner">
 					      			<% if current_user.subscribed?(event) %>
 										<%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
+									<% end %>
+									<% if current_user.id == event.user_id %>
+										<%= link_to "Edit Event", "#", method: :get, class: "button small unsubscribe-button" %>
 									<% end %>
 					      		</div>
 					      	</div>
