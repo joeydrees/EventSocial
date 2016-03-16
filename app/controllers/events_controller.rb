@@ -14,11 +14,11 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		@event.user_id = current_user.id
 	    if @event.save
-	      flash[:notice] = "Event was successfully created."
-	      redirect_to events_path
+	    	flash[:notice] = "Event was successfully created."
+	    	redirect_to events_path
 	    else
-	      flash[:error] = "There was an error creating your event."
-	      redirect_to new_event_path
+	   		flash[:alert] = "There was an error creating your event."
+	    	redirect_to new_event_path
 	    end
 	end
 

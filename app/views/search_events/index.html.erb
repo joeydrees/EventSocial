@@ -18,14 +18,21 @@
                 <% @events.each do |event| %>
                     <tr>
                         <td><%= event.name %></td>
-                        <td>#hashtag</td>
+                        <td><%= event.hashtag %></td>
                         <td><%= event.event_date %></td>
-                        <td><%= event.event_time.strftime("%l:%M %p") %></td>
-                        <td><%= Subscription.where(subscribed_id: event.id).count %></td>
-                        <% if current_user.email.blank? %>
-                            <td>manager</td>
+                        <% if event.event_time[11..12].to_i > 12 %>
+                            <% hour = event.event_time[11..12].to_i - 12%>
+                            <td> <%= hour %><%= event.event_time[13..15] %> PM</td>
                         <% else %>
-                            <td>manager</td>
+                            <td><%= event.event_time[12..15]%> AM</td>
+                        <% end %>
+                        <td><%= event.subscribers.count %></td>
+                        <% email = User.find(event.user_id).email %>
+                        <% username = User.find(event.user_id).username %>
+                        <% if email.blank? %>
+                            <td><%= username %></td>
+                        <% else %>
+                            <td><%= email %></td>
                         <% end %>
                         <td><%= link_to "View Event", "/events/#{event.id}", method: :get, class: "table-links" %></td>
                     </tr>
@@ -39,7 +46,7 @@
 	$(document).ready(function() {
 	    $('#all-events').DataTable({
             "order": [0, 'asc'],
-            "columnDefs": [{ "orderable": false, "targets": [6, 7] }]
+            "columnDefs": [{ "orderable": false, "targets": [6] }]
         });
 	});
 </script>

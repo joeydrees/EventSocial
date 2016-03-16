@@ -5,22 +5,28 @@
 		<p class="text-center"><%= @event.description %></p>
 		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
 		<p class="text-center"><strong>Event Date</strong>: <%= @event.event_date %><br />
-			<strong>Start Time</strong>: <%= @event.event_time.strftime("%l:%M %p") %><br />
-			<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id: @event.id).count %><br />
+			<% if @event.event_time[11..12].to_i > 12 %>
+				<% hour = @event.event_time[11..12].to_i - 12%>
+				<strong>Start Time</strong>: <%= hour %><%= @vent.event_time[13..15] %> PM<br />
+			<% else %>
+				<strong>Start Time</strong>: <%= @event.event_time[12..15]%> AM<br />
+			<% end %>
+			<strong>Number of Subscribers</strong>: <%= @event.subscribers.count %><br />
 			<strong>Event Manager</strong>:&nbsp;
-				<% if current_user.email.blank? %>
-                    <td>manager</td>
-                <% else %>
-                    <td>manager</td>
-                <% end %>
+			<% email = User.find(@event.user_id).email %>
+            <% username = User.find(@event.user_id).username %>
+            <% if email.blank? %>
+                <td><%= username %></td>
+            <% else %>
+                <td><%= email %></td>
+            <% end %>
 		</p>             
-		<% if current_user.subscribed?(@event) %>
+		<% if current_user.id == @event.user_id %>
+			<%= link_to "Edit Event", "#", method: :get, class: "button small unsubscribe-button" %>
+		<% elsif current_user.subscribed?(@event) %>
 			<%= link_to "Unsubscribe", "/events/#{@event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
 		<% else %>
 			<%= link_to "Subscribe", "/events/#{@event.id}/subscribe", method: :get, class: "button small unsubscribe-button" %>
-		<% end %>
-		<% if current_user.id == @event.user_id %>
-			<%= link_to "Edit Event", "#", method: :get, class: "button small unsubscribe-button" %>
 		<% end %>
 	</div>
 </div>

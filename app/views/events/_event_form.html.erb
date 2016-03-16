@@ -11,8 +11,18 @@
 	<% end %>
 	<div class="field">
 		<h3><%= f.label :name %></h3>
-		<!-- put # before name field and validate -->
 		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<h3><%= f.label :hashtag %></h3>
+		<div class="row collapse">
+			<div class="small-1 columns">
+				<span class="prefix">#</span>
+			</div>
+			<div class="small-11 columns">
+				<%= f.text_field :hashtag %>
+			</div>
+		</div>
 	</div>
 	<div class="field">
 		<h3><%= f.label :event_date %></h3>

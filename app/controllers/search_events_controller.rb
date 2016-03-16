@@ -1,7 +1,7 @@
 class SearchEventsController < ApplicationController
 
 	def index
-		@user = User.find(current_user.id)
+		@user = current_user
 		@events = Event.all.reverse
 	end
 	
