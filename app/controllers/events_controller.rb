@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
 
 	def index
-		@user = User.find(current_user.id)
+		@user = current_user
 		@events = Event.where(user_id: @user.id)
+		@subscriptions = @user.subscriptions
 	end
 
 	def new
@@ -22,13 +23,13 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@user = User.find(current_user.id)
+		@user = current_user
 		@event = Event.find(params[:id])
 	end
 
 	def subscribe
 		@event = Event.find(params[:id])
-		@user = User.find(current_user.id)
+		@user = current_user
 		@user.subscribe(@event)
 		redirect_to event_path
 	end
@@ -48,14 +49,14 @@ class EventsController < ApplicationController
 
 	def subscriptions
 		@title = "Subscriptions"
-		@event  = Event.find(params[:id])
-	    @subscriptions = @event.susbscriptions
+		@user = current_user
+	    @subscriptions = @user.susbscriptions
 	end
 
 	private
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def event_params
-	      params.require(:event).permit(:name, :event_date, :event_time, :description)
+	      params.require(:event).permit(:name, :event_date, :event_time, :description).parse_time_select! :event_time
 	    end
 	
 end
