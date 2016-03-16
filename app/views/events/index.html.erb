@@ -7,30 +7,14 @@
 				    <a href="#panel<%= event.id %>a"><%= event.name %></a>
 				    <div id="panel<%= event.id %>a" class="content">
 				    	<div class="row">
-					    	<div class="small-12 columns">
-					    		<p><strong>Event Description</strong> - <%= event.description %></p>
-					    	</div>
 					      	<div class="small-12 columns">
-					      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
-					      	</div>
-					      	<div class="small-12 columns">
-					      		<p class="text-center"><strong>#hashtag</strong><br />
-					      								<strong>Event Date</strong>: <%= event.event_date %><br />
-					      								<strong>Start Time</strong>: <%= event.event_time.strftime("%l:%M %p") %><br />
-					      								<strong>Number of Subscribers</strong>: <%= Subscription.where(subscribed_id: event.id).count %><br />
-					      								<% if current_user.email.blank? %>
-					      									<strong>Event Manager</strong>: <%= User.where(user_id: event.user_id) %></p>
-					      								<% else %>
-					      									<strong>Event Manager</strong>: <%= User.where(user_id: event.user_id) %></p>
-					      								<% end %>
-					      		<div class="event-owner">
-					      			<% if current_user.subscribed?(event) %>
-										<%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
-									<% end %>
-									<% if current_user.id == event.user_id %>
-										<%= link_to "Edit Event", "#", method: :get, class: "button small unsubscribe-button" %>
-									<% end %>
-					      		</div>
+					      		<p class="text-center">
+					      			<strong>#hashtag</strong><br />
+					      			<strong>Event Description</strong>: <%= event.description %><br />
+      								<strong>Event Date</strong>: <%= event.event_date %><br />
+      								<strong>Start Time</strong>: <%= event.event_time.strftime("%l:%M %p") %><br />
+					      		</p>
+					      		<%= link_to "View More", "/events/#{event.id}", method: :get, class: "button small unsubscribe-button" %>
 					      	</div>
 					    </div>
 				    </div>

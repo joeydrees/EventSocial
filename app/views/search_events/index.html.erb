@@ -11,11 +11,9 @@
                     <th>Subscribers</th>
                     <th>Manager</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
-            <tfoot>
-            </tfoot>
+            <tfoot></tfoot>
             <tbody>
                 <% @events.each do |event| %>
                     <tr>
@@ -29,14 +27,7 @@
                         <% else %>
                             <td>manager</td>
                         <% end %>
-                        <% if current_user.subscribed?(event) %>
-                            <td><%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "table-links" %></td>
-                        <% else %>
-                            <td><%= link_to "Subscribe", "/events/#{event.id}/subscribe", method: :get, class: "table-links" %></td>
-                        <% end %>
-                        <% if current_user.id == event.user_id %>
-                            <td><%= link_to "Edit Event", "#", method: :get, class: "table-links" %></td>
-                        <% end %>
+                        <td><%= link_to "View Event", "/events/#{event.id}", method: :get, class: "table-links" %></td>
                     </tr>
                 <% end %>
             </tbody>
