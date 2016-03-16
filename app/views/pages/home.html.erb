@@ -13,8 +13,13 @@
 				<legend>My Events</legend>
 				<div class="row">
 					<div class="small-12 medium-8 medium-centered columns">
-						<%= link_to "View My Events", events_path, method: :get, class: "button" %>
-						<%= link_to "Manage My Events", "#", method: :get, class: "button" %>
+						<% if @user_event == nil %>
+							<%= link_to "New Event", new_event_path, method: :get, class: "button" %>
+							<%= link_to "Search Events", search_events_path, method: :get, class: "button" %>
+						<% else %>
+							<%= link_to "View My Events", events_path, method: :get, class: "button" %>
+							<%= link_to "Manage My Events", "#", method: :get, class: "button" %>
+						<% end %>
 					</div>
 				</div>
 			</fieldset>

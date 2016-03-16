@@ -17,9 +17,13 @@
     <section class="main-section display-tweets-mobile 12-columns" data-equalizer-watch>
     	<div class="row">
     		<div class="small-12 columns">
-    			<% @tweetsArray.each do |tweet| %> 
-					<%= tweet %>
-					<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    			<% if @tweetsArray.empty? %>
+					<h4>There are currently no Tweets for this event.</h4>
+				<% else %>
+	    			<% @tweetsArray.each do |tweet| %> 
+						<%= tweet %>
+						<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+					<% end %>
 				<% end %>
     		</div>
     	</div>
@@ -34,11 +38,14 @@
 		<%= render 'events/events_sidebar' %>
 	</div>
 	<div class="medium-9 columns display-tweets-desktop">
-		<% @tweetsArray.each do |tweet| %> 
-			<%= tweet %>
-			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<% if @tweetsArray.empty? %>
+			<h4>There are currently no Tweets for this event.</h4>
+		<% else %>
+			<% @tweetsArray.each do |tweet| %> 
+				<%= tweet %>
+				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<% end %>
 		<% end %>
-		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
 
 	<div id="createModal" class="reveal-modal subscribe-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">

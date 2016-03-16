@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get '/events/:id/subscribe' => 'events#subscribe'
   get '/events/:id/unsubscribe' => 'events#unsubscribe'
 
-  resources :tweets
-
-  resources :events
+  resources :events do
+    resources :tweets
+  end
 
   resources :search_events
 

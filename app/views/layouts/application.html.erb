@@ -31,14 +31,18 @@
           <!-- Left Nav Section -->
           <% if user_signed_in? %>
             <ul class="left">
-              <li><%= link_to "Tweets", tweets_path, method: :get %></li>
-              <li><%= link_to "Comments Board", "#", method: :get %></li>
               <li><%= link_to "My Events", events_path, method: :get %></li>
+              <% if @user_event != nil %>
+                <li><%= link_to "Tweets", event_tweets_path(@user_event, @tweets), method: :get %></li>
+                <li><%= link_to "Comments Board", "#", method: :get %></li>
+              <% end %>
             </ul>
-          <% end %>
           <!-- Right Nav Section -->
-          <% if user_signed_in? %>
             <ul class="right">
+              <% if params[:controller] == 'events' %>
+                <li><%= link_to "New Event", new_event_path, method: :get %></li>
+                <li><%= link_to "Search Events", search_events_path, method: :get %></li>
+              <% end %>
               <li class="has-dropdown">
                 <% if current_user.provider.blank? %>
                   <a href="#" style="padding-right: 50px !important;"><%= current_user.email %></a>

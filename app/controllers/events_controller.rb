@@ -31,14 +31,14 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		@user = current_user
 		@user.subscribe(@event)
-		redirect_to event_path
+		redirect_to events_path
 	end
 
 	def unsubscribe
 		@event = Event.find(params[:id])
 		@user = User.find(current_user.id)
 		@user.unsubscribe(@event)
-		redirect_to event_path
+		redirect_to events_path
 	end
 
 	def subscribers
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
 	private
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def event_params
-	      params.require(:event).permit(:name, :event_date, :event_time, :description).parse_time_select! :event_time
+	      params.require(:event).permit(:name, :hashtag, :event_date, :event_time, :description).parse_time_select! :event_time
 	    end
 	
 end

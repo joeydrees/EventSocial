@@ -3,13 +3,19 @@ class TweetsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@search = Tweet.search("EventSocial2016", 10)
+		@user = current_user
+		@events = Event.where(user_id: @user.id)
+		@subscriptions = @user.subscriptions
 
+		@event = Event.find(params[:event_id])
+		@hashtag = Event.find(params[:event_id]).hashtag
+
+		@search = Tweet.search(@hashtag, 10)
 		@search.collect do |tweet|
-			Tweet.get_tweet(tweet)
+			Tweet.get_tweet(tweet, @event)
 		end
 
-    	@tweets = Tweet.all.reverse
+    	@tweets = Tweet.where(event_id: @event.id).reverse
 
     	@tweetsArray ||= Array.new 
     	@tweets.each do |tweet|

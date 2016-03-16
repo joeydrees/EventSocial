@@ -46,7 +46,8 @@
 	$(document).ready(function() {
 	    $('#all-events').DataTable({
             "order": [0, 'asc'],
-            "columnDefs": [{ "orderable": false, "targets": [6] }]
+            "columnDefs": [{ "orderable": false, "targets": [6] }],
+            responsive: true
         });
 	});
 </script>

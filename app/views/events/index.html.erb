@@ -3,6 +3,7 @@
 		<h2>My Events</h2>
 		<% if @events.count == 0 %>
 			<h5>You do not have any events.</h5>
+			<%= link_to "New Event", new_event_path, method: :get, class: "button small subscribe-button" %>
 		<% else %>
 			<ul class="accordion" data-accordion>
 				<% @events.each do |event| %>
@@ -12,7 +13,7 @@
 					    	<div class="row">
 						      	<div class="small-12 columns">
 						      		<p class="text-center">
-						      			<strong>#hashtag</strong><br />
+						      			<strong>Hashtag</strong>: #<%= event.hashtag %><br />
 						      			<strong>Event Description</strong>: <%= event.description %><br />
 	      								<strong>Event Date</strong>: <%= event.event_date %><br />
 	      								<% if event.event_time[11..12].to_i > 12 %>
@@ -24,6 +25,7 @@
 	      								<strong>Number of Subscribers</strong>: <%= event.subscribers.count %></p>
 						      		</p>
 						      		<%= link_to "View More", "/events/#{event.id}", method: :get, class: "button small unsubscribe-button" %>
+						      		<%= link_to "Edit Event", "#", class: "button small unsubscribe-button" %>
 						      	</div>
 						    </div>
 					    </div>
@@ -36,6 +38,7 @@
 	  	<h2>Subscribed Events</h2>
 	  	<% if @subscriptions.count == 0 %>
 			<h5>You are not subscribed to any events.</h5>
+			<%= link_to "Search Events", search_events_path, method: :get, class: "button small subscribe-button" %>
 		<% else %>
 		  	<ul class="accordion" data-accordion>
 			  	<% @subscriptions.each do |event| %>
@@ -43,24 +46,22 @@
 					    <a href="#panel<%= event.id %>a"><%= event.name %></a>
 					    <div id="panel<%= event.id %>a" class="content">
 					    	<div class="row">
-						    	<div class="small-12 columns">
-						    		<p><strong>Event Description</strong> - <%= event.description %></p>
-						    	</div>
 						      	<div class="small-12 columns">
-						      		<img class="center my-event-image" src="http://placehold.it/350x150" alt="#{event.id}" />
-						      	</div>
-						      	<div class="small-12 columns">
-						      		<p class="text-center"><strong>#<%= event.name %></strong><br />
-						      								<strong>Event Date</strong>: <%= event.event_date %><br />
-						      								<% if event.event_time[11..12].to_i > 12 %>
-						      									<% hour = event.event_time[11..12].to_i - 12%>
-						      									<strong>Start Time</strong>: <%= hour %><%= event.event_time[13..15] %> PM<br />
-						      								<% else %>
-						      									<strong>Start Time</strong>: <%= event.event_time[11..15]%> AM<br />
-						      								<% end %><br />
-						      								<strong>Number of Subscribers</strong>: <%= event.subscribers.count %></p>
+						      		<p class="text-center">
+						      			<strong>Event Hashtag</strong>: #<%= event.hashtag %><br />
+						      			<strong>Event Description</strong>: <%= event.description %><br />
+	      								<strong>Event Date</strong>: <%= event.event_date %><br />
+	      								<% if event.event_time[11..12].to_i > 12 %>
+	      									<% hour = event.event_time[11..12].to_i - 12%>
+	      									<strong>Start Time</strong>: <%= hour %><%= event.event_time[13..15] %> PM<br />
+	      								<% else %>
+	      									<strong>Start Time</strong>: <%= event.event_time[12..15]%> AM<br />
+	      								<% end %>
+	      								<strong>Number of Subscribers</strong>: <%= event.subscribers.count %>
+      								</p>
 						      		<div class="event-owner">
 						      			<% if current_user.subscribed?(event) %>
+						      				<%= link_to "View More", "/events/#{event.id}", method: :get, class: "button small unsubscribe-button" %>
 											<%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
 										<% end %>
 						      		</div>
