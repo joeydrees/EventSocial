@@ -287,6 +287,9 @@ ul.off-canvas-list li a {
 	background-color: #7FB800 !important;
 	color: #2274A5 !important;
 }
-.date-picker {
-	
+.table-links {
+	color: #2274A5 !important;
+}
+.table-links:hover, .table-links:active {
+	color: #7FB800 !important;
 }

@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="small-12 columns">
+        <h2>Search Events</h2>
+    	<table id="all-events" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Hashtag</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Subscribers</th>
+                    <th>Manager</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <% @events.each do |event| %>
+                    <tr>
+                        <td><%= event.name %></td>
+                        <td>#hashtag</td>
+                        <td><%= event.event_date %></td>
+                        <td><%= event.event_time.strftime("%l:%M %p") %></td>
+                        <td><%= Subscription.where(subscribed_id: event.id).count %></td>
+                        <% if current_user.email.blank? %>
+                            <td>manager</td>
+                        <% else %>
+                            <td>manager</td>
+                        <% end %>
+                        <% if current_user.subscribed?(event) %>
+                            <td><%= link_to "Unsubscribe", "/events/#{event.id}/unsubscribe", method: :get, class: "table-links" %></td>
+                        <% else %>
+                            <td><%= link_to "Subscribe", "/events/#{event.id}/subscribe", method: :get, class: "table-links" %></td>
+                        <% end %>
+                        <% if current_user.id == event.user_id %>
+                            <td><%= link_to "Edit Event", "#", method: :get, class: "table-links" %></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+	$(document).ready(function() {
+	    $('#all-events').DataTable({
+            "order": [0, 'asc'],
+            "columnDefs": [{ "orderable": false, "targets": [6, 7] }]
+        });
+	});
+</script>
