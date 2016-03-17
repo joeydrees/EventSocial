@@ -316,6 +316,9 @@ hr {
 .hidden {
 	display: none !important;
 }
+#all-events_length label, #all-events_info {
+	display: none !important;
+}
 
 /* --- My Profile Page Styles --- */
 .profile-picture {
