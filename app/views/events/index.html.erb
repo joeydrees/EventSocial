@@ -28,7 +28,7 @@
 	      								<strong>Number of Subscribers</strong>: <%= event.subscribers.count %></p>
 						      		</p>
 						      		<%= link_to "View More", "/events/#{event.id}", method: :get, class: "button small unsubscribe-button" %>
-						      		<%= link_to "Edit Event", "#", class: "button small unsubscribe-button" %>
+						      		<%= link_to "Edit Event", "/events/#{event.id}/edit", class: "button small unsubscribe-button" %>
 						      	</div>
 						    </div>
 					    </div>
