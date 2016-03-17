@@ -18,7 +18,7 @@
     	<div class="row">
     		<div class="small-12 columns">
     			<% if @tweetsArray.empty? %>
-					<h4>There are currently no Tweets for this event.</h4>
+					<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 				<% else %>
 	    			<% @tweetsArray.each do |tweet| %> 
 						<%= tweet %>
