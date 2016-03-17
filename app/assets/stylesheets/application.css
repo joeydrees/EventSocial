@@ -11,6 +11,10 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require dataTables.foundation
+ *= require jquery.dataTables
+ *= require responsive.foundation
+ *= require colReorder.foundation
  *= require_self
  *= require foundation_and_overrides
 

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="small-12 columns">
         <h2>Search Events</h2>
-    	<table id="all-events" class="display" cellspacing="0" width="100%">
+    	<table id="all-events" class="display responsive nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -47,7 +47,6 @@
 	    $('#all-events').DataTable({
             "order": [0, 'asc'],
             "columnDefs": [{ "orderable": false, "targets": [6] }],
-            responsive: true
         });
 	});
 </script>
