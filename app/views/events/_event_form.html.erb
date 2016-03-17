@@ -20,7 +20,7 @@
 				<span class="prefix">#</span>
 			</div>
 			<div class="small-11 columns">
-				<%= f.text_field :hashtag, :id=>"event-hashtag", :req=>"event-hashtag", :reqerror=>"Please enter a valid event hashtag." %>
+				<%= f.text_field :hashtag, :id=>"event-hashtag", :req=>"event-hashtag", :reqerror=>"Please enter a valid event hashtag.", :reqvalidate=>"event-hashtag" %>
 			</div>
 		</div>
 	</div>
@@ -61,6 +61,21 @@
 		jQuery.fn.submissionOK.formSubmission = function (o) {
 	       $("#create-event").click();
 	    };
+
+	    jQuery.fn.submissionOK.validation = function (reqvalidate, value) {
+		    var valid = true;
+
+		    switch (reqvalidate.toLowerCase()) {
+		        case 'event-hashtag':
+		            var re = new RegExp('^([A-Za-z0-9]*)$');
+		            valid = re.test(value);
+		            break; 
+		        default:
+		            break;
+		    }
+
+		    return valid;
+		};
 
 		var getDateString = function(date, format) {
 	        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

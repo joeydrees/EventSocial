@@ -39,7 +39,7 @@
 	</div>
 	<div class="medium-9 columns display-tweets-desktop">
 		<% if @tweetsArray.empty? %>
-			<h4 class="no-tweets">There are currently no Tweets for this event.</h4>
+			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 		<% else %>
 			<% @tweetsArray.each do |tweet| %> 
 				<%= tweet %>
@@ -72,3 +72,36 @@
 	  	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 	</div>
 </div>
+
+<script>
+	$(function() {
+		var activeEventHashtag = "<%= Event.find(params[:event_id]).hashtag %>";
+		
+		var myEventsListItems = $("#my-events-list li");
+		addActiveClass(myEventsListItems, activeEventHashtag);
+
+		var subscriptionsListItems = $("#subscriptions-list li");
+		addActiveClass(subscriptionsListItems, activeEventHashtag);
+		
+		var mobileListItems = $("#mobile-events-list li");
+		addActiveClassMobile(mobileListItems, activeEventHashtag);
+	});
+
+	var addActiveClass = function(listItems, activeEventHashtag) {
+		listItems.each(function(index, li) {
+    		var eventHashtag = $(li).text().substring(1);
+    		if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+    			$(li).addClass("active");
+    		}
+		});
+	};
+
+	var addActiveClassMobile = function(listItems, activeEventHashtag) {
+		listItems.each(function(index, li) {
+    		var eventHashtag = $(li).text().substring(1);
+    		if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+    			$(li).children().addClass("active");
+    		}
+		});
+	};
+</script>
