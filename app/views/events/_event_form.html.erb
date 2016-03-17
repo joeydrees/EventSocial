@@ -36,11 +36,17 @@
 		<h3><%= f.label :description %></h3>
 		<%= f.text_area :description, :rows => 4, :id=>"event-description", :req=>"event-description", :reqerror=>"Please enter an event description." %>
 	</div>
-	<a class="button small new-event-button" id="event-submit" href="#">Create Event</a>
-	<div class="actions">
-		<br>
-		<%= f.submit "Create Event", :id=>"create-event", :class => "button small new-event-button hidden" %>
-	</div>
+	<% if current_page?(action: 'edit') %>
+		<div class="field">
+			<%= f.submit "Update Event", :class => "button small unsubscribe-button" %>
+		</div>
+	<% else %>
+		<a class="button small new-event-button" id="event-submit" href="#">Create Event</a>
+		<div class="actions">
+			<br>
+			<%= f.submit "Create Event", :id=>"create-event", :class => "button small new-event-button hidden" %>
+		</div>	
+	<% end %>
 
 	<script>
 		$(document).ready(function() {

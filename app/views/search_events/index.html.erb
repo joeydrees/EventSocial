@@ -23,6 +23,9 @@
                         <% if event.event_time[11..12].to_i > 12 %>
                             <% hour = event.event_time[11..12].to_i - 12%>
                             <td> <%= hour %><%= event.event_time[13..15] %> PM</td>
+                        <% elsif event.event_time[11..12].to_i == 0 %>
+                            <% hour = event.event_time[11..12].to_i + 12 %>
+                            <td><%= hour %><%= event.event_time[13..15] %> AM</td>
                         <% else %>
                             <td><%= event.event_time[12..15]%> AM</td>
                         <% end %>

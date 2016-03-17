@@ -10,6 +10,10 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
+	def edit
+		@event = Event.find(params[:id])
+	end
+
 	def create
 		@event = Event.new(event_params)
 		@event.user_id = current_user.id
@@ -20,6 +24,17 @@ class EventsController < ApplicationController
 	   		flash[:alert] = "There was an error creating your event."
 	    	redirect_to new_event_path
 	    end
+	end
+
+	def update
+		@event = Event.find(params[:id])
+		if @event.update(event_params)
+			flash[:notice] = "Event was successfully updated."
+			redirect_to event_path(@event)
+		else
+			flash[:alert] = "There was an error updating your event."
+	    	redirect_to event_path(@event)
+		end
 	end
 
 	def show
