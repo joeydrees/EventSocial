@@ -3,9 +3,9 @@ body {
 }
 
 .center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 
 /* ---COLOR SCHEME --- */
@@ -315,4 +315,48 @@ hr {
 }
 .hidden {
 	display: none !important;
+}
+
+/* --- My Profile Page Styles --- */
+.profile-picture {
+	width: 150px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.edit-profile-info input {
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+@media only screen and (min-width: 50.063em) { /* medium and up screens only */
+	.edit-profile-info input {
+		width: 40% !important;
+	}
+}
+@media only screen and (min-width: 30.063em) and (max-width: 50.062em) { /* small to medium screens */
+	.edit-profile-info input {
+		width: 60% !important;
+	}
+}
+.edit-profile-button {
+	background-color: #2274A5 !important;
+	color: #7FB800 !important;
+	display: block !important;
+	margin: 15px auto 5px auto !important;
+	font-weight: bold !important;
+	width: 55% !important;
+}
+@media only screen and (min-width: 48.063em) { /* medium and up screens only */
+	.edit-profile-button {
+		width: 25% !important;
+	}
+}
+@media only screen and (min-width: 30.063em) and (max-width: 50.062em) {
+	.edit-profile-button {
+		width: 35% !important;
+	}
+}
+.edit-profile-button:hover, .edit-profile-button:active {
+	background-color: #7FB800 !important;
+	color: #2274A5 !important;
 }
