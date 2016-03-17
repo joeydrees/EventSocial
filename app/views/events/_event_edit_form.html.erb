@@ -1,0 +1,113 @@
+<%= form_for(@event) do |f| %>
+	<% if @event.errors.any? %>
+	    <div id="error_explanation">
+	    	<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+	      	<ul>
+	      		<% @event.errors.full_messages.each do |message| %>
+	        		<li><%= message %></li>
+	      		<% end %>
+	      	</ul>
+	    </div>
+	<% end %>
+	<div class="field">
+		<h3><%= f.label :name %></h3>
+		<%= f.text_field :name, :id=>"event-name", :req=>"event-name", :reqerror=>"Please enter an event name." %>
+	</div>
+	<div class="field">
+		<h3><%= f.label :hashtag %></h3>
+		<div class="row collapse">
+			<div class="small-1 columns">
+				<span class="prefix">#</span>
+			</div>
+			<div class="small-11 columns">
+				<%= f.text_field :hashtag, :id=>"event-hashtag", :req=>"event-hashtag", :reqerror=>"Please enter a valid event hashtag.", :reqvalidate=>"event-hashtag" %>
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<h3><%= f.label :event_date %></h3>
+		<%= f.text_field :event_date, :id=>"dp1", :req=>"dp1", :reqerror=>"Please enter a date for the event.", :html=>{:class => "date-picker"} %>
+	</div>
+	<div class="field">
+		<h3><%= f.label :event_time %></h3>
+		<%= f.time_select :event_time, :combined => true, :default => Time.now, :minute_interval => 30, :time_separator => "", :start_hour => 0, :start_minute => 0, :end_hour => 23, :end_minute => 0, :ampm => true %>
+	</div>
+	<div class="field">
+		<h3><%= f.label :description %></h3>
+		<%= f.text_area :description, :rows => 4, :id=>"event-description", :req=>"event-description", :reqerror=>"Please enter an event description." %>
+	</div>
+	<a class="button small new-event-button" id="event-submit" href="#">Update Event</a>
+	<div class="actions">
+		<br>
+		<%= f.submit "Update Event", :id=>"update-event", :class => "button small new-event-button hidden" %>
+	</div>	
+		
+	<script>
+		$(document).ready(function() {
+			$('#dp1').val(getDateString(new Date(), "M d, y"));
+		    $('#dp1').fdatepicker({
+		        showButtonPanel: true,
+		        format: "MM dd, yyyy"
+		    });
+
+		    $('#event-submit').on("click", function() {
+		    	jQuery('[req]').submissionOK({ 
+		    		highlight: true
+		    	});
+		    	return false;
+		    });
+		});
+
+		jQuery.fn.submissionOK.formSubmission = function (o) {
+	       $("#update-event").click();
+	    };
+
+	    jQuery.fn.submissionOK.validation = function (reqvalidate, value) {
+		    var valid = true;
+
+		    switch (reqvalidate.toLowerCase()) {
+		        case 'event-hashtag':
+		            var re = new RegExp('^([A-Za-z0-9]*)$');
+		            valid = re.test(value);
+		            break; 
+		        default:
+		            break;
+		    }
+
+		    return valid;
+		};
+
+		var getDateString = function(date, format) {
+	        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	        getPaddedComp = function(comp) {
+	            return ((parseInt(comp) < 10) ? ('0' + comp) : comp)
+	        },
+	        formattedDate = format,
+	        o = {
+	            "y+": date.getFullYear(), // year
+	            "M+": months[date.getMonth()], //month
+	            "d+": getPaddedComp(date.getDate()), //day
+	            "h+": getPaddedComp((date.getHours() > 12) ? date.getHours() % 12 : date.getHours()), //hour
+	            "H+": getPaddedComp(date.getHours()), //hour
+	            "m+": getPaddedComp(date.getMinutes()), //minute
+	            "s+": getPaddedComp(date.getSeconds()), //second
+	            "S+": getPaddedComp(date.getMilliseconds()), //millisecond,
+	            "b+": (date.getHours() >= 12) ? 'PM' : 'AM'
+	        };
+
+	        for (var k in o) {
+	            if (new RegExp("(" + k + ")").test(format)) {
+	                formattedDate = formattedDate.replace(RegExp.$1, o[k]);
+	            }
+	        }
+	        return formattedDate;
+	    };
+
+	    jQuery(document).bind('ErrorOccurred', function () {
+	        jQuery('body').animate({
+	            scrollTop: jQuery('.sok_errorBorder').offset().top
+	        }, 1000);
+	    });
+	</script>
+
+<% end %>
