@@ -29,7 +29,11 @@
 				<legend>My Profile</legend>
 				<div class="row">
 					<div class="small-12 medium-8 medium-centered columns">
-						<%= link_to "Edit My Profile", "#", method: :get, class: "button" %>
+						<% if current_user.profile %>
+							<%= link_to "Search Users", users_path, method: :get, class: "button" %>
+						<% else %>
+							<%= link_to "Create Your Profile", new_user_profile_path(current_user), method: :get, class: "button" %>
+						<% end %>
 					</div>
 				</div>
 			</fieldset>

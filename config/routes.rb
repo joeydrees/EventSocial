@@ -3,6 +3,10 @@ Rails.application.routes.draw do
              controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: "users/registrations",
                            passwords: "users/passwords", sessions: "users/sessions" }
 
+  resources :users do
+    resource :profile
+  end
+
   get '/events/:id/subscriptions' => 'events#subscriptions'
   get '/events/:id/subscribers' => 'events#subscribers'
   get '/events/:id/subscribe' => 'events#subscribe'

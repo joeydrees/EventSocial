@@ -48,9 +48,13 @@
                   <a href="#" style="padding-right: 50px !important;"><%= current_user.username %></a>
                 <% end %>
                   <ul class="dropdown">
-                      <li><%= link_to "Manage Events", "#", method: :get %></li>
-                      <li><%= link_to "Edit Profile", "#", method: :get %></li>
-                      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                    <% if current_user.profile %>
+                      <li><%= link_to "My Profile", user_path(current_user), method: :get %></li>
+                    <% else %>
+                      <li><%= link_to "Create Your Profile", new_user_profile_path(current_user), method: :get %></li>
+                    <% end %>
+                    <li><%= link_to "Manage Events", "#", method: :get %></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                   </ul>
               </li>
             </ul>

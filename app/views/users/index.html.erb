@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Search Users</h2>
+    <table id="all-users" class="display responsive nowrap" cellspacing="0" width="100%">
+      <thead>
+          <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Occupation</th>
+              <th>About Me</th>
+              <th>Events</th>
+              <th>Subscriptions</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tfoot></tfoot>
+      <tbody>
+        <% @users.each do |user| %>
+          <% if !user.profile.blank?%>
+            <tr>
+              <td><%= user.profile.first_name %></td>
+              <td><%= user.profile.last_name %></td>
+              <td><%= user.profile.occupation %></td>
+              <td><%= user.profile.about_me%></td>
+              <% event_count = Event.where(user_id: user.id).count %>
+              <td><%= event_count %></td>
+              <td><%= user.subscriptions.count %></td>
+              <td><%= link_to "View Profile", "/users/#{user.id}", method: :get, class: "table-links" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+      $('#all-users').DataTable({
+            "order": [0, 'asc'],
+            "columnDefs": [{ "orderable": false, "targets": [6] }],
+        });
+  });
+</script>

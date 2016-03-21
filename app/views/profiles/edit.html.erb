@@ -1,17 +1,6 @@
 <div class="row">
-	<div class="small-12 columns edit-profile-info">
-		<img src="http://placehold.it/200x200" alt="Profile Picture" class="center profile-picture" />
-		<% if current_user.provider.blank? %>
-			<h5 class="text-center">Change Email</h5>
-            <input type="text" value="<%= current_user.email %>" />
-        <% else %>
-        	<h5 class="text-center">Username</h5>
-        	<input type="text" value="<%= current_user.username %>" readonly />
-        <% end %>
-		<h5 class="text-center">Change Password</h5>
-		<input type="password" placeholder="Current Password">
-		<input type="password" placeholder="New Password">
-		<input type="password" placeholder="Confirm New Password">
-		<a href="#" class="button small edit-profile-button">Save Changes</a>
+	<div class="small-12 columns new-event">
+		<h2>Edit Profile</h2>
+		<%= render 'edit_form' %>
 	</div>
 </div>

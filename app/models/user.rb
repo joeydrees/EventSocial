@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :profile
+
   has_many :events, foreign_key: "user_id"
 
   has_many :subscriptions, through: :active_relationships, source: :subscribed
