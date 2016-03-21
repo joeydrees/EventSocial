@@ -26,11 +26,16 @@
 		</div>
 		<div class="small-12 medium-6 columns">
 			<fieldset class="home-profile" data-equalizer-watch>
-				<legend>My Profile</legend>
+				<% if current_user.profile %>
+					<legend>Community</legend>
+				<% else %>
+					<legend>My Profile</legend>
+				<% end %>
 				<div class="row">
 					<div class="small-12 medium-8 medium-centered columns">
 						<% if current_user.profile %>
-							<%= link_to "Search Users", users_path, method: :get, class: "button" %>
+							<p>Search the Event Social community for other Users.</p>
+							<%= link_to "Search User Profiles", users_path, method: :get, class: "button" %>
 						<% else %>
 							<%= link_to "Create Your Profile", new_user_profile_path(current_user), method: :get, class: "button" %>
 						<% end %>

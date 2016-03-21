@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317163211) do
+ActiveRecord::Schema.define(version: 20160321182945) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20160317163211) do
     t.text     "about_me"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
   end
 
   create_table "subscriptions", force: :cascade do |t|
