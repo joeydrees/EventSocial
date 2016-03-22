@@ -16,6 +16,13 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 
+	def delete_event_pic
+		@event = Event.find(params[:id])
+		@event.event_pic.destroy
+		@event.save
+		redirect_to edit_event_path(@event)
+	end
+
 	def create
 		@event = Event.new(event_params)
 		@event.user_id = current_user.id
@@ -30,7 +37,7 @@ class EventsController < ApplicationController
 
 	def update
 		@event = Event.find(params[:id])
-		if @event.update(event_params)
+		if @event.update_attributes(event_params)
 			flash[:notice] = "Event was successfully updated."
 			redirect_to event_path(@event)
 		else

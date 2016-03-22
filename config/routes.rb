@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resource :profile
   end
 
+  get '/users/:user_id/profile/delete_profile_pic' => 'profiles#delete_profile_pic'
+  get '/events/:id/delete_event_pic' => 'events#delete_event_pic'
   get '/events/:id/subscriptions' => 'events#subscriptions'
   get '/events/:id/subscribers' => 'events#subscribers'
   get '/events/:id/subscribe' => 'events#subscribe'

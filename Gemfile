@@ -14,15 +14,16 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
-# Use devise and omniauth-twitter for twitter login
+# Use devise and omniauth-twitter gems for twitter login
 gem 'devise'
 gem 'omniauth-twitter'
 
 # Use Twitter gem to interact with Twitter API
 gem 'twitter'
 
-# Use Paperclip gem for image uploads
-gem 'paperclip'
+# Use Paperclip and AWS-SDK gems for image uploads
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+gem 'aws-sdk'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

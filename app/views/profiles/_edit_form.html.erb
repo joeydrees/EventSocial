@@ -20,15 +20,19 @@
   <div class="field">
     <%= f.label :profile_picture %>
     <%= f.file_field :profile_pic %>
+    <% if @profile.profile_pic_file_name.present? %>
+      <%= link_to "Remove Image", "/users/#{@user.id}/profile/delete_profile_pic", method: :get, class: "button small new-event-button" %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :occupation %>
     <%= f.text_field :occupation %>
+  </div>
   <div class="field">
     <%= f.label :about_me %>
     <%= f.text_area :about_me %>
   </div>
   <div class="field">
-    <%= f.submit "Update Profile" %>
+    <%= f.submit "Update Profile", class: "button small new-event-button" %>
   </div>
 <% end %>

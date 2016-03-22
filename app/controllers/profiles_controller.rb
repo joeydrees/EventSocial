@@ -3,9 +3,6 @@ class ProfilesController < ApplicationController
 	before_action :authenticate_user!
   	before_action :only_current_user
 
-	def index
-	end
-
 	def new
     	# form where a user can fill out their own profile.
     	@user = User.find( params[:user_id] )
@@ -26,6 +23,14 @@ class ProfilesController < ApplicationController
 	def edit
 		@user = User.find( params[:user_id] )
 		@profile = @user.profile
+	end
+
+	def delete_profile_pic
+		@user = User.find(params[:user_id])
+		@profile = @user.profile
+		@profile.profile_pic.destroy
+		@profile.save
+		redirect_to edit_user_profile_path(@user)
 	end
   
 	def update

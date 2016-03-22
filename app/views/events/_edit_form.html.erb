@@ -27,7 +27,11 @@
 	<div class="field">
     	<%= f.label :event_header %>
     	<%= f.file_field :event_pic %>
+    	<% if @event.event_pic_file_name.present? %>
+    		<%= link_to "Remove Image", "/events/#{params[:id]}/delete_event_pic", method: :get, class: "button small new-event-button" %>
+    	<% end %>
   	</div>
+
 	<div class="field">
 		<h3><%= f.label :event_date %></h3>
 		<%= f.text_field :event_date, :id=>"dp1", :req=>"dp1", :reqerror=>"Please enter a date for the event.", :html=>{:class => "date-picker"} %>
