@@ -21,3 +21,6 @@
 
 # Ignore uploaded pictures
 /public/system/*
+
+# Ignore generated docs
+/doc/*

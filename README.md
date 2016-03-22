@@ -1,7 +1,12 @@
-# [![Application icon](https://raw.githubusercontent.com/rdt712/EventSocial/profile/app/assets/images/readme-logo.png)][icon]
-[icon]: https://raw.githubusercontent.com/rdt712/EventSocial/profile/app/assets/images/readme-logo.png 
+<img src="https://raw.githubusercontent.com/rdt712/EventSocial/master/app/assets/images/Event-Social-Brand.png" alt="Drawing" style="width: 600px;"/>
 
-# Event Social
+<br />
+
+Authors
+
+	Backend:  Ryan Toler
+	Frontend: Joey Drees
+
 [Event Social Live Demo][website]
 
 [website]: https://eventsocial.herokuapp.com
@@ -46,18 +51,23 @@ Next, you will need to install Rails.
 Here is a guide to install [Rails][rails].
 [rails]: http://installrails.com/steps/choose_os
 
-#### Required Ruby and Rails version
+#### Install ImageMagick via Homebrew
+If you don't have Homebrew, you can get that [here][brew].
+[brew]: http://brew.sh
+	brew install ImageMagick
+
+#### Event Social's Ruby and Rails version
 	ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-darwin15]
 
 	rails 4.2.5.1
 
 ## Download and Set Up
 
-Download the [zip file][zip] from GitHub and unzip the zip file to a directory of your choice.
+Download the [zip file][zip] from GitHub and unzip the zip file to a directory of your choice. For example, /workspace/EventSocial.
 [zip]: https://github.com/rdt712/EventSocial/archive/master.zip
 
 #### Bundle Install
-	cd /eventsocial/directory
+	cd /workspace/EventSocial
 	bundle install
 
 #### Migrate the Database
