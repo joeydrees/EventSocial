@@ -28,7 +28,9 @@
     	<%= f.label :event_header %>
     	<%= f.file_field :event_pic %>
     	<% if @event.event_pic_file_name.present? %>
-    		<%= link_to "Remove Image", "/events/#{params[:id]}/delete_event_pic", method: :get, class: "button small new-event-button" %>
+    		Current picture:&nbsp;&nbsp;&nbsp;
+      		<%= image_tag @event.event_pic.url :thumb %>
+    		<%= link_to "Remove Image", "/events/#{params[:id]}/delete_event_pic", method: :get, class: "button small new-event-button float-right-large" %>
     	<% end %>
   	</div>
 
