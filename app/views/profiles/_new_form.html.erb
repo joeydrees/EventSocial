@@ -11,11 +11,11 @@
   <% end %>
   <div class="field">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :id=>"first-name", :req=>"first-name", :reqerror=>"Please enter your first name." %>
   </div>
   <div class="field">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :id=>"last-name", :req=>"last-name", :reqerror=>"Please enter your last name." %>
   </div>
   <div class="field">
     <%= f.label :profile_picture %>
@@ -23,12 +23,36 @@
   </div>
   <div class="field">
     <%= f.label :occupation %>
-    <%= f.text_field :occupation %>
+    <%= f.text_field :occupation, :id=>"occupation", :req=>"occupation", :reqerror=>"Please enter your occupation." %>
+  </div>
   <div class="field">
     <%= f.label :about_me %>
     <%= f.text_area :about_me %>
   </div>
+  <a class="button small new-event-button" id="profile-submit" href="#">Create Profile</a>
   <div class="field">
-    <%= f.submit "Create Profile" %>
+    <%= f.submit "Create Profile", :id=>"create-profile", class: "button small new-event-button hidden" %>
   </div>
+
+  <script>
+    $(document).ready(function() {
+        $('#profile-submit').on("click", function() {
+          jQuery('[req]').submissionOK({ 
+            highlight: true
+          });
+          return false;
+        });
+    });
+
+    jQuery.fn.submissionOK.formSubmission = function (o) {
+         $("#create-profile").click();
+      };
+
+      jQuery(document).bind('ErrorOccurred', function () {
+          jQuery('body').animate({
+              scrollTop: jQuery('.sok_errorBorder').offset().top
+          }, 1000);
+      });
+  </script>
+
 <% end %>

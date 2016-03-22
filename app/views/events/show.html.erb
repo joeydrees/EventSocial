@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="small-12 columns">
 		<% if @event.event_pic_file_name.present? %>
-			<%= image_tag @event.event_pic.url :medium %>
+			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner" %>
 		<% end %>
 		<h3 class="text-center"><strong><%= @event.name %></strong></h3>
 		<h5 class="text-center"><strong>#<%= @event.hashtag %></strong></h5>

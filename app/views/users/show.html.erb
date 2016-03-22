@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="small-12 columns">
 		<% if @user.profile.profile_pic_file_name.present? %>
-			<%= image_tag @user.profile.profile_pic.url :thumb %>
+			<%= image_tag @user.profile.profile_pic.url(:medium), :class=>"profile-image" %>
 		<% end %>
-		<h1><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
-		<h3>Description</h3>
-      	<%= @user.profile.about_me %>
+		<h1 class="text-center"><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
+		<h4 class="text-center"><%= @user.profile.occupation %></h4>
+      	<p class="text-center"><%= @user.profile.about_me %></p>
 	</div>
 </div>

@@ -322,6 +322,12 @@ hr {
 #all-users_length label, #all-users_info {
 	display: none !important;
 }
+.event-banner {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
 
 /* --- My Profile Page Styles --- */
 .profile-picture {
@@ -365,4 +371,15 @@ hr {
 .edit-profile-button:hover, .edit-profile-button:active {
 	background-color: #7FB800 !important;
 	color: #2274A5 !important;
+}
+@media only screen and (min-width: 40.063em) { /* medium and up screens only */
+	.float-right-large {
+		float:right;
+	}
+}
+.profile-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
 }
