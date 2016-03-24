@@ -3,6 +3,12 @@
 		<% if @event.event_pic_file_name.present? %>
 			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner" %>
 		<% end %>
+		<div id="getting-started"></div>
+		<script type="text/javascript">
+		  $('#getting-started').countdown(new Date('<%= @event.event_date %>'), function(event) {
+		    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+		  });
+		</script>
 		<h3 class="text-center"><strong><%= @event.name %></strong></h3>
 		<h5 class="text-center"><strong>#<%= @event.hashtag %></strong></h5>
 		<p class="text-center"><strong>Description</strong>: <%= @event.description %></p>

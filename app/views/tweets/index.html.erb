@@ -38,6 +38,9 @@
 		<%= render 'events/events_sidebar' %>
 	</div>
 	<div class="medium-9 columns display-tweets-desktop">
+		<% if @event.event_pic_file_name.present? %>
+			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner-tweets" %>
+		<% end %>
 		<% if @tweetsArray.empty? %>
 			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 		<% else %>

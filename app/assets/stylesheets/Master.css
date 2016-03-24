@@ -242,6 +242,9 @@ ul.off-canvas-list li a.active {
 hr {
 	margin: 0 0 0.1875rem !important;
 }
+.event-banner-tweets {
+	margin-top: 20px;
+}
 
 /* --- My Events Page Styles --- */
 .accordion .accordion-navigation > a, .accordion dd > a {
