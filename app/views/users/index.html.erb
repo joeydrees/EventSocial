@@ -7,7 +7,6 @@
               <th>First Name</th>
               <th>Last Name</th>
               <th>Occupation</th>
-              <th>About Me</th>
               <th>Events</th>
               <th>Subscriptions</th>
               <th></th>
@@ -21,7 +20,6 @@
               <td><%= user.profile.first_name %></td>
               <td><%= user.profile.last_name %></td>
               <td><%= user.profile.occupation %></td>
-              <td><%= user.profile.about_me%></td>
               <% event_count = Event.where(user_id: user.id).count %>
               <td><%= event_count %></td>
               <td><%= user.subscriptions.count %></td>

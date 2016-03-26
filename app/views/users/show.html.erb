@@ -1,10 +1,33 @@
-<div class="row">
+<div class="row show-for-medium-up">
+	<div class="small-12 medium-4 columns">
+		<% if @user.profile.profile_pic_file_name.present? %>
+			<%= image_tag @user.profile.profile_pic.url(:medium), :class=>"profile-picture" %>
+		<% else %>
+			<%= image_tag("profile-placeholder.png", :class=>"profile-picture") %>
+		<% end %>
+	</div>
+	<div class="small-12 medium-8 columns">
+		<h1><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
+		<h4><%= image_tag("job-icon.png", :class=>"job-icon") %><%= @user.profile.occupation %></h4>
+		<div class="panel about-me">
+			<h4>About Me</h4>
+			<p><%= @user.profile.about_me %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row show-for-small-only">
 	<div class="small-12 columns">
 		<% if @user.profile.profile_pic_file_name.present? %>
-			<%= image_tag @user.profile.profile_pic.url(:medium), :class=>"profile-image" %>
+			<%= image_tag @user.profile.profile_pic.url(:medium), :class=>"profile-picture" %>
+		<% else %>
+			<%= image_tag("profile-placeholder.png", :class=>"profile-picture") %>
 		<% end %>
 		<h1 class="text-center"><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
-		<h4 class="text-center"><%= @user.profile.occupation %></h4>
-      	<p class="text-center"><%= @user.profile.about_me %></p>
+		<h4 class="text-center"><%= image_tag("job-icon.png", :class=>"job-icon") %><%= @user.profile.occupation %></h4>
+		<div class="panel about-me">
+			<h4>About Me</h4>
+			<p><%= @user.profile.about_me %></p>
+		</div>
 	</div>
 </div>

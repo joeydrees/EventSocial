@@ -334,9 +334,9 @@ hr {
 
 /* --- My Profile Page Styles --- */
 .profile-picture {
-	width: 150px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	width: 200px;
+	display: block;
+	margin: 20px auto 20px auto;
 }
 .edit-profile-info input {
 	display: block !important;
@@ -380,11 +380,24 @@ hr {
 		float:right;
 	}
 }
-.profile-image {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
+.about-me {
+	width: 75%;
+	background-color: #2274A5 !important;
+}
+.about-me p, .about-me h4 {
+	color: #FFFFFF !important;
+}
+.job-icon {
+	width: 50px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+@media only screen and (max-width: 40em) { /* small screens only */
+	.about-me {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 /*  --- Countdown Plugin Styles --- */
