@@ -1,43 +1,37 @@
 <div class="row">
 	<div class="small-12 columns">
+
+		<!-- Countdown start -->
+		<div class="row hide-for-small-only event-countdown">
+			<div id="countdown_dashboard">
+				<div class="medium-12 columns">
+					<div class="dash weeks_dash">
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+					<div class="dash days_dash">
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+					<div class="dash hours_dash">
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+					<div class="dash minutes_dash">
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+					<div class="dash seconds_dash">
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Countdown end -->
 		<% if @event.event_pic_file_name.present? %>
 			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner" %>
 		<% end %>
-
-		<!-- Countdown dashboard start -->
-		<div id="countdown_dashboard">
-			<div class="dash weeks_dash">
-				<span class="dash_title">weeks</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
-
-			<div class="dash days_dash">
-				<span class="dash_title">days</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
-
-			<div class="dash hours_dash">
-				<span class="dash_title">hours</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
-
-			<div class="dash minutes_dash">
-				<span class="dash_title">minutes</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
-
-			<div class="dash seconds_dash">
-				<span class="dash_title">seconds</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
-
-		</div>
-		<!-- Countdown dashboard end -->
 
 		<h3 class="text-center"><strong><%= @event.name %></strong></h3>
 		<h5 class="text-center"><strong>#<%= @event.hashtag %></strong></h5>
@@ -74,21 +68,26 @@
 
 <script language="javascript" type="text/javascript">
 	jQuery(document).ready(function() {
+		// get the event date and split it into vars
 		var eventDate = "<%= @event.event_date %>";
 		var dates = eventDate.split(" ");
 		var month = getMonthNumber(dates[0]);
 		var day = parseInt(dates[1].substring(0, dates[1].length - 1));
 		var year = parseInt(dates[2]);
 
-		var eventTime = "<%= @event.event_time %>";
-		console.log(eventTime);
+		// get the event time and split it into vars
+		var eventTime = "<%= @event.event_time %>".split(" ")[1];
+		var hour = eventTime.split(":")[0];
+		var minute = eventTime.split(":")[1];
+
+		// initialize the countdown with the date and time of the event
 		$('#countdown_dashboard').countDown({
 			targetDate: {
 				'day': 		day,
 				'month': 	month,
 				'year': 	year,
-				'hour': 	0,
-				'min': 		0,
+				'hour': 	hour,
+				'min': 		minute,
 				'sec': 		0
 			}
 		});
