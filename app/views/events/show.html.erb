@@ -1,41 +1,43 @@
-<div class="row">
-	<div class="small-12 columns">
+<!-- Desktop Version -->
+<div class="row show-for-medium-up">
+	<div class="medium-12 columns">
 
 		<!-- Countdown start -->
-		<div class="row hide-for-small-only event-countdown">
+		<div class="medium-12 columns hide-for-small-only event-countdown">
 			<div id="countdown_dashboard">
-				<div class="medium-12 columns">
-					<div class="dash weeks_dash">
-						<div class="digit">0</div>
-						<div class="digit">0</div>
-					</div>
-					<div class="dash days_dash">
-						<div class="digit">0</div>
-						<div class="digit">0</div>
-					</div>
-					<div class="dash hours_dash">
-						<div class="digit">0</div>
-						<div class="digit">0</div>
-					</div>
-					<div class="dash minutes_dash">
-						<div class="digit">0</div>
-						<div class="digit">0</div>
-					</div>
-					<div class="dash seconds_dash">
-						<div class="digit">0</div>
-						<div class="digit">0</div>
-					</div>
+				<div class="dash weeks_dash">
+					<div class="digit">0</div>
+					<div class="digit">0</div>
+				</div>
+				<div class="dash days_dash">
+					<div class="digit">0</div>
+					<div class="digit">0</div>
+				</div>
+				<div class="dash hours_dash">
+					<div class="digit">0</div>
+					<div class="digit">0</div>
+				</div>
+				<div class="dash minutes_dash">
+					<div class="digit">0</div>
+					<div class="digit">0</div>
+				</div>
+				<div class="dash seconds_dash">
+					<div class="digit">0</div>
+					<div class="digit">0</div>
 				</div>
 			</div>
 		</div>
 		<!-- Countdown end -->
+
 		<% if @event.event_pic_file_name.present? %>
 			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner" %>
 		<% end %>
-
 		<h3 class="text-center"><strong><%= @event.name %></strong></h3>
 		<h5 class="text-center"><strong>#<%= @event.hashtag %></strong></h5>
-		<p class="text-center"><strong>Description</strong>: <%= @event.description %></p>
+		<div class="panel event-description">
+			<h4 class="text-center">Description</h4>
+			<p class="text-center"><%= @event.description %></p>
+		</div>
 		<p class="text-center"><strong>Event Date</strong>: <%= @event.event_date %><br />
 			<% if @event.event_time[11..12].to_i > 12 %>
 				<% hour = @event.event_time[11..12].to_i - 12 %>
@@ -55,7 +57,52 @@
             <% else %>
                 <td><%= email %></td>
             <% end %>
-		</p>             
+		</p>     
+		<%= link_to "View Tweets", event_tweets_path(@event), method: :get, class: "button small unsubscribe-button" %>
+		<% if current_user.id == @event.user_id %>
+			<%= link_to "Edit Event", "/events/#{@event.id}/edit", method: :get, class: "button small unsubscribe-button" %>
+		<% elsif current_user.subscribed?(@event) %>
+			<%= link_to "Unsubscribe", "/events/#{@event.id}/unsubscribe", method: :get, class: "button small unsubscribe-button" %>
+		<% else %>
+			<%= link_to "Subscribe", "/events/#{@event.id}/subscribe", method: :get, class: "button small unsubscribe-button" %>
+		<% end %>
+	</div>
+</div>
+
+<!-- Mobile Version -->
+<div class="row show-for-small-only">
+	<div class="small-12 columns">
+		<% if @event.event_pic_file_name.present? %>
+			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner" %>
+		<% end %>
+
+		<h3 class="text-center"><strong><%= @event.name %></strong></h3>
+		<h5 class="text-center"><strong>#<%= @event.hashtag %></strong></h5>
+		<div class="panel event-description">
+			<h4 class="text-center">Description</h4>
+			<p class="text-center"><strong>Description</strong>: <%= @event.description %></p>
+		</div>
+		<p class="text-center"><strong>Event Date</strong>: <%= @event.event_date %><br />
+			<% if @event.event_time[11..12].to_i > 12 %>
+				<% hour = @event.event_time[11..12].to_i - 12 %>
+				<strong>Start Time</strong>: <%= hour %><%= @event.event_time[13..15] %> PM<br />
+			<% elsif @event.event_time[11..12].to_i == 0 %>
+				<% hour = @event.event_time[11..12].to_i + 12 %>
+				<strong>Start Time</strong>: <%= hour %><%= @event.event_time[13..15] %> AM<br />
+			<% else %>
+				<strong>Start Time</strong>: <%= @event.event_time[12..15]%> AM<br />
+			<% end %>
+			<strong>Number of Subscribers</strong>: <%= @event.subscribers.count %><br />
+			<strong>Event Manager</strong>:&nbsp;
+			<% email = User.find(@event.user_id).email %>
+            <% username = User.find(@event.user_id).username %>
+            <% if email.blank? %>
+                <td><%= username %></td>
+            <% else %>
+                <td><%= email %></td>
+            <% end %>
+		</p>      
+		<%= link_to "View Tweets", event_tweets_path(@event), method: :get, class: "button small unsubscribe-button" %>
 		<% if current_user.id == @event.user_id %>
 			<%= link_to "Edit Event", "/events/#{@event.id}/edit", method: :get, class: "button small unsubscribe-button" %>
 		<% elsif current_user.subscribed?(@event) %>
