@@ -1,6 +1,4 @@
-<img src="https://raw.githubusercontent.com/rdt712/EventSocial/master/app/assets/images/Event-Social-Brand.png" alt="Drawing" style="width: 600px;"/>
-
-<br />
+<img src="https://raw.githubusercontent.com/rdt712/EventSocial/master/app/assets/images/Event-Social-Brand.png" alt="Drawing" style="width: 550px;"/>
 
 Authors
 
@@ -62,9 +60,10 @@ If you don't have Homebrew, you can get that [here][brew].
 	rails 4.2.5.1
 
 ## Download and Set Up
-
-Download the [zip file][zip] from GitHub and unzip the zip file to a directory of your choice. For example, /workspace/EventSocial.
+<br />
+Download the [zip file][zip] from GitHub and unzip the zip file to a directory of your choice.
 [zip]: https://github.com/rdt712/EventSocial/archive/master.zip
+For example, /workspace/EventSocial.
 
 #### Bundle Install
 	cd /workspace/EventSocial
@@ -72,6 +71,20 @@ Download the [zip file][zip] from GitHub and unzip the zip file to a directory o
 
 #### Migrate the Database
 	rake db:migrate 
+
+#### Integrate the Twitter API
+First, you must create a [Twitter App][app] to use the Twitter API.
+
+Then, in /config/environments/development.rb, add your API keys from the Twitter App.
+
+    $twitter = Twitter::REST::Client.new do |config|
+    	config.consumer_key = "DEV_TWITTER_CONSUMER_KEY"
+    	config.consumer_secret = "DEV_TWITTER_CONSUMER_SECRET"
+    	config.access_token = "DEV_TWITTER_ACCESS_TOKEN"
+    	config.access_token_secret = "DEV_TWITTER_ACCESS_TOKEN_SECRET"
+	end
+
+[app]: https://apps.twitter.com/
 
 #### Start the Server
 	rails server

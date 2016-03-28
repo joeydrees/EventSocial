@@ -49,6 +49,13 @@ class EventsController < ApplicationController
 	def show
 		@user = current_user
 		@event = Event.find(params[:id])
+		@event_date = @event.event_date
+		@event_time = @event.event_time
+		@year = @event.getYear(@event_date)
+		@month = @event.getMonth(@event_date)
+		@day = @event.getDay(@event_date)
+		@hour = @event.getHour(@event_time)
+		@minute = @event.getMinute(@event_time)
 	end
 
 	def subscribe
