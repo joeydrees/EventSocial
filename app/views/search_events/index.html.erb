@@ -6,6 +6,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Hashtag</th>
+                    <th>Location</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Subscribers</th>
@@ -18,7 +19,8 @@
                 <% @events.each do |event| %>
                     <tr>
                         <td><%= event.name %></td>
-                        <td><%= event.hashtag %></td>
+                        <td>#<%= event.hashtag %></td>
+                        <td><%= event.location %></td>
                         <td><%= event.event_date %></td>
                         <% if event.event_time[11..12].to_i > 12 %>
                             <% hour = event.event_time[11..12].to_i - 12%>

@@ -14,6 +14,19 @@ class EventsController < ApplicationController
 
 	def edit
 		@event = Event.find(params[:id])
+		@time = @event.event_time.split(" ")[1]
+	end
+
+	def destroy
+		@event = Event.find(params[:id])
+		@tweets = Tweet.where(event_id: @event.id)
+		if @event.destroy && @tweets.delete_all
+			flash[:notice] = "Event was successfully deleted."
+			redirect_to events_url
+		else
+			flash[:alert] = "There was an error deleting the event."
+			redirect_to events_url
+		end
 	end
 
 	def delete_event_pic
@@ -87,7 +100,7 @@ class EventsController < ApplicationController
 	private
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def event_params
-	      params.require(:event).permit(:name, :hashtag, :event_pic, :event_date, :event_time, :description).parse_time_select! :event_time
+	      params.require(:event).permit(:name, :hashtag, :event_pic, :location, :event_date, :event_time, :description).parse_time_select! :event_time
 	    end
 	
 end

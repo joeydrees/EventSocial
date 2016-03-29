@@ -25,5 +25,4 @@ class TweetsController < ApplicationController
   							   </blockquote>".html_safe)
         end
 	end
-	
 end

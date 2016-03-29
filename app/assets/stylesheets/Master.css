@@ -338,6 +338,21 @@ hr {
 	color: white !important;
 }
 
+.pricing-table .title {
+	background-color: #2274A5 !important;
+	color: #7FB800 !important;
+	font-size: 1.8rem !important;
+}
+
+.pricing-table .bullet-item {
+	font-size: 1.1rem !important;
+}
+
+.pricing-table .description {
+	color: #333333 !important;
+    font-size: 1.1rem !important;
+}
+
 /* --- Profile Styles --- */
 .profile-picture {
 	width: 200px;
