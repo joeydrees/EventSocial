@@ -179,6 +179,12 @@ ul.off-canvas-list li a {
 ul.off-canvas-list li a.active {
     background: #242424 !important;
 }
+.mobile-event-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
 
 /* --- Tweets Page Styles (Desktop) --- */
 .off-canvas-wrap, .off-canvas-wrap > .inner-wrap {
@@ -243,7 +249,7 @@ hr {
 	margin: 0 0 0.1875rem !important;
 }
 .event-banner-tweets {
-	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
 /* --- Events Styles --- */
