@@ -15,7 +15,8 @@ class TweetsController < ApplicationController
 			Tweet.get_tweet(tweet, @event)
 		end
 
-    	@tweets = Tweet.where(event_id: @event.id).reverse
+    	@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag).order("created_at ASC")
+
 
     	@tweetsArray ||= Array.new 
     	@tweets.each do |tweet|

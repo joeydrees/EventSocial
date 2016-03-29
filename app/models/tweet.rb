@@ -9,6 +9,8 @@ class Tweet < ActiveRecord::Base
     		t.text = tweet.text
  			t.id_str = tweet.id
  			t.event_id = event.id
+ 			t.tweet_created_at = tweet.created_at
+ 			t.hashtag = event.hashtag
    		end
 	end
 

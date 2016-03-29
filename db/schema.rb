@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328232551) do
+ActiveRecord::Schema.define(version: 20160329201701) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -62,10 +62,12 @@ ActiveRecord::Schema.define(version: 20160328232551) do
     t.string   "username"
     t.string   "text"
     t.string   "id_str"
-    t.boolean  "approved",   default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "approved",         default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "event_id"
+    t.datetime "tweet_created_at"
+    t.string   "hashtag"
   end
 
   create_table "users", force: :cascade do |t|
