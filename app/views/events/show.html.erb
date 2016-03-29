@@ -88,7 +88,7 @@
 			<% username = User.find(@event.user_id).username %>
 			<% if email.blank? %>
 				<li class="bullet-item"><strong>Event Manager</strong>: <%= link_to username, "/users/#{@event.user_id}", method: :get, class: "manager-profile" %></li>
-            <% else %>
+			<% else %>
 				<li class="bullet-item"><strong>Event Manager</strong>: <%= link_to email, "/users/#{@event.user_id}", method: :get, class: "manager-profile" %></li>
 			<% end %>
 			<li class="description"><%= @event.description %></li>
@@ -110,3 +110,14 @@
 		<br />
 	</div>
 </div>
+
+<!-- Reloads page in safari -->
+<script type="text/javascript">
+	window.addEventListener("pageshow", function(evt){
+        if(evt.persisted){
+        	setTimeout(function(){
+            	window.location.reload();
+        	},10);
+    	}
+	}, false);
+</script>
