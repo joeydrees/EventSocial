@@ -84,6 +84,13 @@
 				<li class="bullet-item"><strong>Time</strong>: <%= @event.event_time[12..15]%> AM</li>
 			<% end %>
 			<li class="bullet-item"><strong>Subscribers</strong>: <%= @event.subscribers.count %></li>
+			<% email = User.find(@event.user_id).email %>
+			<% username = User.find(@event.user_id).username %>
+			<% if email.blank? %>
+				<li class="bullet-item"><strong>Event Manager</strong>: <%= link_to username, "/users/#{@event.user_id}", method: :get, class: "manager-profile" %></li>
+            <% else %>
+				<li class="bullet-item"><strong>Event Manager</strong>: <%= link_to email, "/users/#{@event.user_id}", method: :get, class: "manager-profile" %></li>
+			<% end %>
 			<li class="description"><%= @event.description %></li>
 		</ul>
 	</div>

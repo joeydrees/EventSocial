@@ -352,6 +352,12 @@ hr {
 	color: #333333 !important;
     font-size: 1.1rem !important;
 }
+.manager-profile {
+	color: #2274A5 !important;
+}
+.manager-profile:hover, .manager-profile.active > a:first-child:not(.button) {
+	color: #7FB800 !important;
+}
 
 /* --- Profile Styles --- */
 .profile-picture {

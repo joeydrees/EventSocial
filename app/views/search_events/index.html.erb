@@ -26,7 +26,7 @@
                             <% hour = event.event_time[11..12].to_i - 12%>
                             <td> <%= hour %><%= event.event_time[13..15] %> PM</td>
                         <% elsif event.event_time[11..12].to_i < 12 && event.event_time[11..12].to_i >= 10 %>
-                            <td> <%= event.event_time[11..15]%> AM </td>>
+                            <td> <%= event.event_time[11..15]%> AM </td>
                         <% elsif event.event_time[11..12].to_i == 0 %>
                             <% hour = event.event_time[11..12].to_i + 12 %>
                             <td><%= hour %><%= event.event_time[13..15] %> AM</td>
