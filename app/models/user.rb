@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :events, foreign_key: "user_id"
 
-  has_many :subscriptions, through: :active_relationships, source: :subscribed
-  has_many :active_relationships, class_name:  "Subscription", foreign_key: "subscriber_id", dependent: :destroy
+  has_many :subscriptions, through: :has_subscriptions, source: :subscribed
+  has_many :has_subscriptions, class_name:  "Subscription", foreign_key: "subscriber_id", dependent: :destroy
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -33,12 +33,12 @@ class User < ActiveRecord::Base
 
   # Subscribes to an event.
   def subscribe(event)
-    active_relationships.create(subscribed_id: event.id)
+    has_subscriptions.create(subscribed_id: event.id)
   end
 
   # Unsubscribes to an event.
   def unsubscribe(event)
-    active_relationships.find_by(subscribed_id: event.id).destroy
+    has_subscriptions.find_by(subscribed_id: event.id).destroy
   end
 
   # Returns true if the current user is subscribed to the event.

@@ -8,8 +8,8 @@ class Event < ActiveRecord::Base
   	
   	validates_attachment_content_type :event_pic, :content_type => /\Aimage\/.*\Z/
 
-	has_many :subscribers, through: :passive_relationships, source: :subscriber
-	has_many :passive_relationships, class_name:  "Subscription", foreign_key: "subscribed_id", dependent: :destroy
+	has_many :subscribers, through: :has_subscribers, source: :subscriber
+	has_many :has_subscribers, class_name:  "Subscription", foreign_key: "subscribed_id", dependent: :destroy
 
 	def getYear(event_date)
 		values = event_date.split(" ")
