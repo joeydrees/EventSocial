@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
 			Tweet.get_tweet(tweet, @event)
 		end
 
-    	@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag).order("created_at ASC")
+    	@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag).order("tweet_created_at DESC")
 
 
     	@tweetsArray ||= Array.new 
