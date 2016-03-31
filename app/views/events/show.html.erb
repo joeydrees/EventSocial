@@ -75,6 +75,8 @@
 			<% if @event.event_time[11..12].to_i > 12 %>
 				<% hour = @event.event_time[11..12].to_i - 12 %>
 				<li class="bullet-item"><strong>Time</strong>: <%= hour %><%= @event.event_time[13..15] %> PM</li>
+			<% elsif @event.event_time[11..12].to_i == 12 %>
+	      		<li class="bullet-item"><strong>Time</strong>: <%= @event.event_time[11..15] %> PM</li>
 			<% elsif @event.event_time[11..12].to_i < 12 && @event.event_time[11..12].to_i >= 10 %>
 				<li class="bullet-item"><strong>Time</strong>: <%= @event.event_time[11..15]%> AM</li>
 			<% elsif @event.event_time[11..12].to_i == 0 %>
