@@ -1,0 +1,18 @@
+<%= link_to "Add Comment", "#", method: :get, class: "button small subscribe-button" %>
+<%= link_to "New Event", new_event_path, method: :get, class: "button small subscribe-button" %>
+<%= link_to "Search Events", search_events_path, method: :get, class: "button small subscribe-button" %>
+<h5 class="side-nav-title">My Events</h5>
+<ul class="side-nav events-list" id="my-events-list">
+	<% @events.each do |event| %>
+		<% event_id = Event.find(event.id) %>
+		<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+	<% end %>
+</ul>
+<hr>
+<h5 class="side-nav-title">Subscriptions</h5>
+<ul class="side-nav events-list" id="subscriptions-list">
+	<% @subscriptions.each do |event| %>
+		<% event_id = Event.find(event.id) %>
+		<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+	<% end %>
+</ul>

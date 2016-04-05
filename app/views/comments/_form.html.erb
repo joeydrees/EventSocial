@@ -1,0 +1,9 @@
+<%= form_for @comment, url: event_comments_path(@event, @comment), remote: true do |f| %>
+	<div class="field">
+	    <%= f.label :comment %>
+	    <%= f.text_area :comment %>
+  	</div>
+  	<div class="actions">
+    	<%= f.submit "Add Comment" %>
+  	</div>
+<% end %>

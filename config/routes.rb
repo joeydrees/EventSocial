@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :tweets
   end
 
+  resources :events do
+    resources :comments
+  end
+
   resources :search_events
 
   # The priority is based upon order of creation: first created -> highest priority.

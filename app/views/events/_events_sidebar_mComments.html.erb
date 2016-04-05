@@ -1,0 +1,15 @@
+<ul class="off-canvas-list" id="mobile-events-list">
+	<li><%= link_to "Add Comment", "#", method: :get %></li>
+	<li><%= link_to "New Event", new_event_path, method: :get %></li>
+	<li><%= link_to "Search Events", search_events_path, method: :get %></li>
+	<li><label>My Events</label></li>
+	<% @events.each do |event| %>
+		<% event_id = Event.find(event.id) %>
+		<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+	<% end %>
+	<li><label>Subscriptions</label></li>
+	<% @subscriptions.each do |event| %>
+		<% event_id = Event.find(event.id) %>
+		<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+	<% end %>
+</ul>

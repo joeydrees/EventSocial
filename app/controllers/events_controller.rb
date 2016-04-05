@@ -20,12 +20,13 @@ class EventsController < ApplicationController
 	def destroy
 		@event = Event.find(params[:id])
 		@tweets = Tweet.where(event_id: @event.id)
-		if @event.destroy && @tweets.delete_all
+		@comments = Comment.where(event_id: @event.id)
+		if @event.destroy && @tweets.delete_all && @comments.delete_all
 			flash[:notice] = "Event was successfully deleted."
-			redirect_to events_url
+			redirect_to events_path
 		else
 			flash[:alert] = "There was an error deleting the event."
-			redirect_to events_url
+			redirect_to events_path
 		end
 	end
 

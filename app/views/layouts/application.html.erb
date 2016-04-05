@@ -33,7 +33,7 @@
               <li><%= link_to "My Events", events_path, method: :get %></li>
               <% if @user_event != nil %>
                 <li><%= link_to "Tweets", event_tweets_path(@user_event, @tweets), method: :get %></li>
-                <li><%= link_to "Comments Board", "#", method: :get %></li>
+                <li><%= link_to "Comments Board", event_comments_path(@user_event, @comments), method: :get %></li>
               <% end %>
             </ul>
           <!-- Right Nav Section -->

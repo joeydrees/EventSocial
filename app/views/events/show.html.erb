@@ -5,7 +5,7 @@
 		<% end %>
 	</div>
 </div>
-<div class="row show-for-large-only">
+<div class="row show-for-large-up">
 	<div class="large-6 columns">
 		<h1><strong><%= @event.name %></strong></h1>
 		<h3><strong>#<%= @event.hashtag %></strong></h3>
@@ -20,11 +20,11 @@
 				day		: <%= @day %>,
 				hour    : <%= @hour %>,
 				minute  : <%= @minute %>,
+				timezone: -4,
 				width	: 300, 
 				height	: 50,
 				hideLine: true,
 				rangeHi : "day",
-
 				numbers	: 
 				{
 					color  : "#7FB800",

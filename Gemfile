@@ -25,6 +25,12 @@ gem 'twitter'
 gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 gem 'aws-sdk'
 
+# Use Combined_Time_Select gem for easier time selection when creating events
+gem 'combined_time_select', '~> 1.0.1'
+
+# Use Ancestry gem for nested comments
+gem 'ancestry'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -33,8 +39,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# combined time select for easier time selection when creating events
-gem 'combined_time_select', '~> 1.0.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

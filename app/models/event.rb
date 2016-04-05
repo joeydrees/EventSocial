@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
 	
 	has_many :users
 	has_many :tweets
+	has_many :comments
 
 	has_attached_file :event_pic, 
 					  :styles => { :medium => "800x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
@@ -66,4 +67,5 @@ class Event < ActiveRecord::Base
 		hour = time.split(":")[2]
 		return hour
 	end
+
 end
