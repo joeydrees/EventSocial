@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
 	def new
 		@event = Event.find(params[:event_id])
-		@comment = Comment.new
+		@comment = Comment.new(:parent_id => params[:parent_id])
 	end
 
     def create
@@ -34,28 +34,23 @@ class CommentsController < ApplicationController
 	    end
   	end
 
-	def edit
-		@comment = Comment.find(params[:id])
-	end
-
-	def update
+	def destroy
+		@event = Event.find(params[:event_id])
 		@comments = Comment.all
 		@comment = Comment.find(params[:id])
-
-		@comment.update_attributes(comment_params)
-	end
-
-	def destroy
-		@comment = Comment.find(params[:id])
-	    @comment.destroy
-	    respond_to do |format|
-	    	flash.now[:notice] = 'Comment was sucessfully deleted.'
-		    format.html do
-		    	flash[:notice] = 'Comment was successfully deleted.'
-		        redirect_to event_comments_path(@event, @comments)
-		    end
-		    format.js
-		end
+	    if @comment.destroy
+		    respond_to do |format|
+		    	flash.now[:notice] = 'Comment was sucessfully deleted.'
+			    format.html do
+			    	flash[:notice] = 'Comment was successfully deleted.'
+			        redirect_to event_comments_path(@event, @comments)
+			    end
+			    format.js
+			end
+		else
+			flash[:alert] = 'There was an error posting your comment.'
+	    	redirect_to event_comments_path(@event, @comments)
+	    end
 	end
 
   	private

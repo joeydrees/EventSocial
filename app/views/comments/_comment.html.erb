@@ -8,5 +8,9 @@
         <% else %>
            	<h5>Posted by: <%= email %></h5>
         <% end %>
+        <%= link_to "Reply", new_event_comment_path(:parent_id => comment.id), remote: true %>
+        <% if current_user.id == comment.user_id %>
+             | <%= link_to "Delete", event_comment_path(@event, comment), remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>  
+        <% end %>
     </div>
 <% end %>
