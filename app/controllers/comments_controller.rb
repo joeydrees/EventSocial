@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
 	def index
 		@event = Event.find(params[:event_id])
 		@comments = Comment.all
+		@comment = Comment.new
 	end
 
 	def new
-		@comments = Comment.all
 		@event = Event.find(params[:event_id])
 		@comment = Comment.new
 	end
@@ -21,12 +21,16 @@ class CommentsController < ApplicationController
     	@comment.event_id = @event.id
 	    if @comment.save
 	      	respond_to do |format|
+	      		flash.now[:notice] = 'Comment was sucessfully posted.'
 	        	format.html do
 	          		flash[:notice] = 'Comment was sucessfully posted.'
 	          		redirect_to event_comments_path(@event, @comments)
 	        	end
-	        	format.js # JavaScript response
+	        	format.js
 	      	end
+	    else
+	    	flash[:alert] = 'There was an error posting your comment.'
+	    	redirect_to event_comments_path(@event, @comments)
 	    end
   	end
 
@@ -43,14 +47,14 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@comment = Comment.find(params[:id])
-	    @post = @comment.post
 	    @comment.destroy
 	    respond_to do |format|
+	    	flash.now[:notice] = 'Comment was sucessfully deleted.'
 		    format.html do
 		    	flash[:notice] = 'Comment was successfully deleted.'
 		        redirect_to event_comments_path(@event, @comments)
 		    end
-		    format.js # JavaScript response
+		    format.js
 		end
 	end
 

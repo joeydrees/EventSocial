@@ -1,3 +1,12 @@
 <% @comments.each do |comment| %>
-    <p><%= comment.comment %></p>
+	<div>
+    	<h5><%= comment.comment %></h5>
+    	<% email = User.find(comment.user_id).email %>
+    	<% username = User.find(comment.user_id).username %>
+        <% if email.blank? %>
+        	<h5>Posted by: <%= username %></h5>
+        <% else %>
+           	<h5>Posted by: <%= email %></h5>
+        <% end %>
+    </div>
 <% end %>
