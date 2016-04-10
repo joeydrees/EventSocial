@@ -1,0 +1,7 @@
+<div class="row">
+	<div class="small-12 columns">
+		<%= nested_comments @comment.subtree.arrange(:order => :created_at) %>
+
+		<p><%= link_to "Back to All Messages", event_comments_path %></p>
+	</div>
+</div>

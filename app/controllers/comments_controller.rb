@@ -4,13 +4,18 @@ class CommentsController < ApplicationController
 
 	def index
 		@event = Event.find(params[:event_id])
-		@comments = Comment.all
+		@comments = Comment.where(event_id: @event.id)
 		@comment = Comment.new
 	end
 
 	def new
 		@event = Event.find(params[:event_id])
 		@comment = Comment.new(:parent_id => params[:parent_id])
+	end
+
+	def show
+		@event = Event.find(params[:event_id])
+		@comment = Comment.find(params[:id])
 	end
 
     def create
@@ -55,17 +60,9 @@ class CommentsController < ApplicationController
 
   	private
 
-  		def all_comments
-	      @comments = Comment.all
-	    end
-
-	    def set_comments
-	      @comment = Comment.find(params[:id])
-	    end
-
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def comment_params
-	      params.require(:comment).permit(:comment)
+	      params.require(:comment).permit(:comment, :parent_id)
 	    end
 
 end

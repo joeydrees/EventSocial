@@ -10,11 +10,10 @@
 	    </div>
 	<% end %>
 	<div class="field">
-	    <%= f.label :comment %>
 	    <%= f.hidden_field :parent_id %>
-	    <%= f.text_area :comment, :rows => 4 %>
+	    <%= f.text_area :comment, :rows => 3 %>
   	</div>
   	<div class="actions">
-    	<%= f.submit "Post Comment" %>
+    	<%= f.submit "Reply" %>
   	</div>
 <% end %>

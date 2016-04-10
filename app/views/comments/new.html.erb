@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Reply</h3>
+
+		<%= render @comment.parent if @comment.parent %>
+
+		<%= render "reply_form" %>
+
+		<p><%= link_to "Back to Comments", event_comments_path %></p>
+	</div>
+</div>

@@ -474,3 +474,11 @@ hr {
 	background-color: #2E2E2E;
 	margin-bottom: 20px;
 }
+
+/*  --- Comment Styles --- */
+.nested-comments {
+	margin-left: 40px;
+}
+.nested-comments .nested-comments .nested-comments .nested-comments {
+	margin-left: 0;
+}

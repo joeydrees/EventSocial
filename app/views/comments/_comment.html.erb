@@ -1,16 +1,18 @@
-<% @comments.each do |comment| %>
-	<div>
-    	<h5><%= comment.comment %></h5>
-    	<% email = User.find(comment.user_id).email %>
-    	<% username = User.find(comment.user_id).username %>
-        <% if email.blank? %>
-        	<h5>Posted by: <%= username %></h5>
-        <% else %>
-           	<h5>Posted by: <%= email %></h5>
-        <% end %>
-        <%= link_to "Reply", new_event_comment_path(:parent_id => comment.id), remote: true %>
-        <% if current_user.id == comment.user_id %>
-             | <%= link_to "Delete", event_comment_path(@event, comment), remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>  
-        <% end %>
+<div>
+    <br />
+    <div><%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></div>
+    <div>
+        <%= link_to comment.comment, event_comment_path(@event, comment) %>
     </div>
-<% end %>
+    <% email = User.find(comment.user_id).email %>
+    <% username = User.find(comment.user_id).username %>
+    <% if email.blank? %>
+      <div>Posted by: <%= username %></div>
+    <% else %>
+      <div>Posted by: <%= email %></div>
+    <% end %>
+    <div>
+        <%= link_to "Reply", new_event_comment_path(:parent_id => comment.id), remote: true %> |
+        <%= link_to "Delete", event_comment_path(@event, comment), data: { :confirm => "Are you sure you want to delete this comment?" }, :method => :delete, remote: true %>
+    </div>
+</div>

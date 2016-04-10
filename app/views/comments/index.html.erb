@@ -1,23 +1,18 @@
 <div class="row">
-  <div data-alert id='notice'>
-    <%= render 'layouts/flash' %>
+  <div class="small-12 columns">
+    <div data-alert id='notice'>
+      <%= render 'layouts/flash' %>
+    </div>
+    
+    <h2>Comments Board</h2>
+
+    <div id="comment-form">
+      <%= render 'form' %>
+    </div>
+
+    <div id="comments">
+      <%= nested_comments @comments.arrange(:order => 'created_at DESC') %>
+    </div>
+
   </div>
-</div>
-
-<div class="row">
-  <div>
-    <h2>Comments</h2>
-  </div>
-
-  <div>
-    <%= link_to "New Comment", new_event_comment_path, remote: true %>
-  </div>
-</div>
-
-<div class="row">
-  <div id="comment-form" style="display: none"></div>
-</div>
-
-<div class="row">
-  <div id="comments"><%= render 'comment' %></div>
 </div>

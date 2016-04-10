@@ -1,2 +1,2 @@
-$('#comments').html("<%= escape_javascript(render 'comment') %>");
+$('#comments').html("<%= escape_javascript(nested_comments @comments.arrange(:order => 'created_at DESC')) %>");
 $('#notice').html("<%= escape_javascript(render 'layouts/flash') %>");

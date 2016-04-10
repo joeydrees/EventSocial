@@ -1,2 +1,2 @@
-$('#comment-form').html("<%= escape_javascript (render 'form') %>");
-$('#comment-form').slideDown(350);
+$('#comment-<%= @comment.parent_id %>').html("<%= escape_javascript (render 'reply_form') %>");
+$('#comment-<%= @comment.parent_id %>').slideToggle(350);

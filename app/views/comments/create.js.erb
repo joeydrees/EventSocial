@@ -1,3 +1,3 @@
-$('#comments').html("<%= escape_javascript(render 'comment') %>");
-$('#comment-form').slideUp(350);
+$('#comments').html("<%= escape_javascript(nested_comments @comments.arrange(:order => 'created_at DESC')) %>");
+$('#comment_comment').val('');
 $('#notice').html("<%= escape_javascript(render 'layouts/flash') %>");
