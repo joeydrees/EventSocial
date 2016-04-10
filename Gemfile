@@ -69,5 +69,7 @@ group :development do
   gem 'spring'
   # Auto generates class diagrams
   gem 'railroady'
+  # Generates Favicons
+  gem 'rails_real_favicon'
 end
 

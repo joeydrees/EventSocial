@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     def create
     	@event = Event.find(params[:event_id])
-    	@comments = Comment.all
+    	@comments = Comment.where(event_id: @event.id)
     	@comment = Comment.new(comment_params)
     	@comment.user_id = current_user.id
     	@comment.event_id = @event.id
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@event = Event.find(params[:event_id])
-		@comments = Comment.all
+		@comments = Comment.where(event_id: @event.id)
 		@comment = Comment.find(params[:id])
 	    if @comment.destroy
 		    respond_to do |format|

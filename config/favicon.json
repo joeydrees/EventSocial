@@ -1,0 +1,42 @@
+{
+    "master_picture": "app/assets/images/Event-Social-Logo.png",
+    "favicon_design": {
+        "ios": {
+            "picture_aspect": "background_and_margin",
+            "background_color": "#ffffff",
+            "margin": "7%",
+            "app_name": "Event Social"
+        },
+        "desktop_browser": [
+
+        ],
+        "windows": {
+            "picture_aspect": "white_silhouette",
+            "background_color": "#00a300",
+            "on_conflict": "override",
+            "app_name": "Event Social"
+        },
+        "android_chrome": {
+            "picture_aspect": "background_and_margin",
+            "margin": "8%",
+            "background_color": "#ffffff",
+            "theme_color": "#ffffff",
+            "manifest": {
+                "name": "Event Social",
+                "display": "browser",
+                "orientation": "not_set",
+                "on_conflict": "override",
+                "declared": true
+            }
+        },
+        "safari_pinned_tab": {
+            "picture_aspect": "silhouette",
+            "theme_color": "#5bbad5"
+        }
+    },
+    "settings": {
+        "compression": 5,
+        "scaling_algorithm": "Cubic",
+        "error_on_image_too_small": false
+    }
+}

@@ -1,18 +1,96 @@
-<div class="row">
-  <div class="small-12 columns">
-    <div data-alert id='notice'>
-      <%= render 'layouts/flash' %>
-    </div>
-    
-    <h2>Comments Board</h2>
+<div class="off-canvas-wrap show-for-small-only mobile-events-menu" data-offcanvas data-equalizer>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon button" href="#"><span></span></a>
+      </section>
+    </nav>
 
-    <div id="comment-form">
-      <%= render 'form' %>
-    </div>
+    <aside class="left-off-canvas-menu" data-equalizer-watch>
+      <%= render 'events/events_sidebar_mobile' %>
+    </aside>
 
-    <div id="comments">
-      <%= nested_comments @comments.arrange(:order => 'created_at DESC') %>
-    </div>
+    <section class="middle tab-bar-section">
+        <h6 class="title events-off-canvas">My Events</h1>
+    </section>
 
+    <section class="main-section display-tweets-mobile 12-columns" data-equalizer-watch>
+      <div class="row">
+        <div class="small-12 columns">
+          <div data-alert id='notice-mobile'>
+            <%= render 'layouts/flash' %>
+          </div>
+          
+          <h2>Comments Board</h2>
+
+          <div>
+            <%= render 'mobile_form' %>
+          </div>
+
+          <div id="comments-mobile">
+            <%= nested_comments @comments.arrange(:order => 'created_at DESC') %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <a class="exit-off-canvas"></a>
   </div>
 </div>
+
+<div class="row show-for-medium-up">
+  <div class="row">
+    <div class="medium-12 columns" data-alert id='notice'>
+      <%= render 'layouts/flash' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-3 columns">
+      <%= render 'events/events_sidebar' %>
+    </div>
+    <div class="medium-9 columns"> 
+      <h2>Comments Board</h2>
+
+      <div id="comment-form">
+        <%= render 'form' %>
+      </div>
+
+      <div id="comments">
+        <%= nested_comments @comments.arrange(:order => 'created_at DESC') %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    var activeEventHashtag = "<%= Event.find(params[:event_id]).hashtag %>";
+    
+    var myEventsListItems = $("#my-events-list li");
+    addActiveClass(myEventsListItems, activeEventHashtag);
+
+    var subscriptionsListItems = $("#subscriptions-list li");
+    addActiveClass(subscriptionsListItems, activeEventHashtag);
+    
+    var mobileListItems = $("#mobile-events-list li");
+    addActiveClassMobile(mobileListItems, activeEventHashtag);
+  });
+
+  var addActiveClass = function(listItems, activeEventHashtag) {
+    listItems.each(function(index, li) {
+        var eventHashtag = $(li).text().substring(1);
+        if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+          $(li).addClass("active");
+        }
+    });
+  };
+
+  var addActiveClassMobile = function(listItems, activeEventHashtag) {
+    listItems.each(function(index, li) {
+        var eventHashtag = $(li).text().substring(1);
+        if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+          $(li).children().addClass("active");
+        }
+    });
+  };
+</script>

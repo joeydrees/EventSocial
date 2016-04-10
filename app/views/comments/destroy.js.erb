@@ -1,2 +1,7 @@
+// Ajax for desktop destroy action
 $('#comments').html("<%= escape_javascript(nested_comments @comments.arrange(:order => 'created_at DESC')) %>");
+$('#comments-mobile').html("<%= escape_javascript(nested_comments @comments.arrange(:order => 'created_at DESC')) %>");
+
+// Ajax for mobile destroy action
 $('#notice').html("<%= escape_javascript(render 'layouts/flash') %>");
+$('#notice-mobile').html("<%= escape_javascript(render 'layouts/flash') %>");

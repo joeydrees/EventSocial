@@ -4,7 +4,11 @@
 <ul class="side-nav events-list" id="my-events-list">
 	<% @events.each do |event| %>
 		<% event_id = Event.find(event.id) %>
-		<li><%= link_to "##{event.hashtag}", event_tweets_path(event), method: :get %>
+		<% if params[:controller] == "tweets" %>
+			<li><%= link_to "##{event.hashtag}", event_tweets_path(event), method: :get %>
+		<% elsif params[:controller] == "comments" %>
+			<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+		<% end %>
 	<% end %>
 </ul>
 <hr>
@@ -12,6 +16,10 @@
 <ul class="side-nav events-list" id="subscriptions-list">
 	<% @subscriptions.each do |event| %>
 		<% event_id = Event.find(event.id) %>
-		<li><%= link_to "##{event.hashtag}", event_tweets_path(event), method: :get %>
+		<% if params[:controller] == "tweets" %>
+			<li><%= link_to "##{event.hashtag}", event_tweets_path(event), method: :get %>
+		<% elsif params[:controller] == "comments" %>
+			<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
+		<% end %>
 	<% end %>
 </ul>
