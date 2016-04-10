@@ -28,7 +28,7 @@
           </div>
 
           <div id="comments-mobile">
-            <%= nested_comments @comments.arrange(:order => 'created_at DESC') %>
+            <%= nested_comments_mobile @comments.arrange(:order => 'created_at DESC') %>
           </div>
         </div>
       </div>

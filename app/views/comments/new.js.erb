@@ -1,3 +1,7 @@
-// Ajax for new action (when you reply to a comment)
+// Ajax for desktop new action (when you reply to a comment)
 $('#comment-<%= @comment.parent_id %>').html("<%= escape_javascript (render 'reply_form') %>");
 $('#comment-<%= @comment.parent_id %>').slideToggle(350);
+
+// Ajax for mobile new action (when you reply to a comment on mobile)
+$('#comment-<%= @comment.parent_id %>-mobile').html("<%= escape_javascript (render 'reply_form') %>");
+$('#comment-<%= @comment.parent_id %>-mobile').slideToggle(350);

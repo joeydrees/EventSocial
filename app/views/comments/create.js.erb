@@ -4,6 +4,6 @@ $('#text-area').val('');
 $('#notice').html("<%= escape_javascript(render 'layouts/flash') %>");
 
 // Ajax for mobile create action
-$('#comments-mobile').html("<%= escape_javascript(nested_comments @comments.arrange(:order => 'created_at DESC')) %>");
+$('#comments-mobile').html("<%= escape_javascript(nested_comments_mobile @comments.arrange(:order => 'created_at DESC')) %>");
 $('#text-area-mobile').val('');
 $('#notice-mobile').html("<%= escape_javascript(render 'layouts/flash') %>");
