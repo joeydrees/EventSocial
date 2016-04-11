@@ -12,9 +12,25 @@
 	<div class="field">
 	    <%= f.label :comment %>
 	    <%= f.hidden_field :parent_id %>
-	    <%= f.text_area :comment, :rows => 4, :id => "text-area-mobile" %>
+	    <%= f.text_area :comment, :rows => 4, :id => "text-area-mobile", :req => "text-area-mobile", :reqerror => "Please enter a comment." %>
   	</div>
+  	<!-- <a class="button small comment-button" id="comment-submit-mobile" href="#">Post Comment</a> -->
   	<div class="actions">
-    	<%= f.submit "Post Comment" %>
+    	<%= f.submit "Post Comment", :id => "submit-comment-mobile", :class => "button small comment-button" %>
   	</div>
+
+<!--   	<script>
+	    $(document).ready(function() {
+	        $('#comment-submit-mobile').on("click", function() {
+	            jQuery('[req]').submissionOK({ 
+	                highlight: true
+	            });
+	            return false;
+	        });
+	    });
+
+	    jQuery.fn.submissionOK.formSubmission = function (o) {
+	       $("#submit-comment-mobile").click();
+	    };
+	</script> -->
 <% end %>

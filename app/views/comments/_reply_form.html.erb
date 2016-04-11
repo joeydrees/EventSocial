@@ -13,12 +13,12 @@
 	    <%= f.hidden_field :parent_id %>
 	    <%= f.text_area :comment, :rows => 3, :placeholder => "Reply...", :id => "comment-reply", :req => "comment-reply", :reqerror => "Please enter a reply." %>
   	</div>
-  	<a class="button small comment-button" id="reply-submit" href="#">Reply</a>
+  	<!-- <a class="button small comment-button" id="reply-submit" href="#">Reply</a> -->
   	<div class="actions">
-    	<%= f.submit "Reply", :id => "submit-reply", :class => "button small comment-button hidden" %>
+    	<%= f.submit "Reply", :id => "submit-reply", :class => "button small comment-button" %>
   	</div>
 
-  	<script>
+  	<!--<script>
 	    $(document).ready(function() {
 	        $('#reply-submit').on("click", function() {
 	            jQuery('[req]').submissionOK({ 
@@ -31,5 +31,5 @@
 	    jQuery.fn.submissionOK.formSubmission = function (o) {
 	       $("#submit-reply").click();
 	    };
-	</script>
+	</script>-->
 <% end %>

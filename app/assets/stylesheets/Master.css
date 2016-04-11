@@ -364,6 +364,23 @@ hr {
 .manager-profile:hover, .manager-profile.active > a:first-child:not(.button) {
 	color: #7FB800 !important;
 }
+.event-show-button {
+	background-color: #2274A5 !important;
+	color: #7FB800 !important;
+	display: block !important;
+	margin: 16px auto 20px auto !important;
+	width: 60% !important;
+	font-weight: bold !important;
+}
+@media only screen and (min-width: 48.063em) { /* medium and up screens only */
+	.event-show-button {
+		width: 60% !important;
+	}
+}
+.event-show-button:hover, .event-show-button:active {
+	background-color: #7FB800 !important;
+	color: #2274A5 !important;
+}
 
 /* --- Profile Styles --- */
 .profile-picture {
@@ -448,3 +465,46 @@ hr {
 	background-color: #7FB800 !important;
 	color: #2274A5 !important;
 }
+.user-comment {
+	background-color: #FFFFFF;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px 0 10px 0;
+	position: relative;
+}
+.comment-picture {
+	width: 100px;
+	z-index: 2;
+	position: relative;
+}
+.comment-text {
+	position: relative;
+	z-index: 2;
+}
+.comment-user {
+	color: #2274A5 !important;
+	position: relative;
+	z-index: 2;
+}
+.comment-user:hover, .comment-user.active > a:first-child:not(.button) {
+	color: #7FB800 !important;
+}
+.comment-icons {
+	position: relative;
+	z-index: 2;
+}
+.comment-icons img {
+	width: 20px;
+}
+.comment-icons:hover img {
+	background-color: #F1F1F1;
+}
+.link-spanner{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  background-image: url('empty.gif');
+}   
