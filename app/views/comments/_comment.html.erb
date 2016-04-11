@@ -1,7 +1,12 @@
 <div class=" small-12 columns user-comment">
     <div class="small-3 medium-2 columns">
-        <% if @user.profile.profile_pic_file_name.present? %>
-            <%= link_to (image_tag @user.profile.profile_pic.url(:medium), :class=>"comment-picture"), "/users/#{comment.user_id}", method: :get  %> 
+        <% user = User.find(comment.user_id) %>
+        <% if !user.profile.nil? %>
+            <% if user.profile.profile_pic_file_name.present? %>
+                <%= link_to (image_tag user.profile.profile_pic.url(:medium), :class=>"comment-picture"), "/users/#{comment.user_id}", method: :get  %>
+            <% else %>
+                <%= image_tag("profile-placeholder.png", :class=>"comment-picture") %>
+            <% end %>
         <% else %>
             <%= image_tag("profile-placeholder.png", :class=>"comment-picture") %>
         <% end %>
@@ -9,10 +14,18 @@
     <div class="small-9 medium-10 columns">
         <% email = User.find(comment.user_id).email %>
         <% username = User.find(comment.user_id).username %>
-        <% if email.blank? %>
-          <div><strong><%= link_to username, "/users/#{comment.user_id}", method: :get, class: "comment-user"  %></strong></div>
+        <% if !user.profile.nil? %>
+            <% if email.blank? %>
+              <div><strong><%= link_to username, "/users/#{comment.user_id}", method: :get, class: "comment-user"  %></strong></div>
+            <% else %>
+              <div><strong><%= link_to email, "/users/#{comment.user_id}", method: :get, class: "comment-user"  %></strong></div>
+            <% end %>
         <% else %>
-          <div><strong><%= link_to email, "/users/#{comment.user_id}", method: :get, class: "comment-user"  %></strong></div>
+            <% if email.blank? %>
+                <div><strong><%= username %></strong></div>
+            <% else %>
+                <div><strong><%= email %></strong></div>
+            <% end %>
         <% end %>
         <div><em><%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></em></div>
         <div>
@@ -20,9 +33,13 @@
         </div>
         
         <div>
-            <%= link_to image_tag("reply-icon.png"), new_event_comment_path(:parent_id => comment.id), :class => "", remote: true, class: "comment-icons" %> 
-            |
-            <%= link_to image_tag("delete-icon.png"), event_comment_path(@event, comment), :class => "comment-icons", data: { :confirm => "Are you sure you want to delete this comment?" }, :method => :delete, remote: true %>
+            <% if params[:action] != "show" %> 
+                <%= link_to image_tag("reply-icon.png"), new_event_comment_path(:parent_id => comment.id), :class => "", remote: true, class: "comment-icons" %> 
+                <% if comment.user_id == current_user.id %>
+                    |
+                    <%= link_to image_tag("delete-icon.png"), event_comment_path(@event, comment), :class => "comment-icons", data: { :confirm => "Are you sure you want to delete this comment?" }, :method => :delete, remote: true %>
+                <% end %>
+            <% end %>
         </div>
     </div>
     <a href="<%= event_comment_path(@event, comment) %>">

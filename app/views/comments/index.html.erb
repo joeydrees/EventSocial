@@ -21,7 +21,10 @@
             <%= render 'layouts/flash' %>
           </div>
           
-          <h2>Comments Board</h2>
+          <h2 class="text-center"><%= @event.name %></h2>
+          <% if @event.event_pic_file_name.present? %>
+            <%= image_tag @event.event_pic.url(:medium), :class=>"event-banner-tweets mobile-event-image" %>
+          <% end %>
 
           <div>
             <%= render 'mobile_form' %>
@@ -49,7 +52,10 @@
       <%= render 'events/events_sidebar' %>
     </div>
     <div class="medium-9 columns"> 
-      <h2>Comments Board</h2>
+      <h2 class="text-center"><%= @event.name %></h2>
+      <% if @event.event_pic_file_name.present? %>
+        <%= image_tag @event.event_pic.url(:medium), :class=>"event-banner-tweets mobile-event-image" %>
+      <% end %>
 
       <div id="comment-form">
         <%= render 'form' %>
