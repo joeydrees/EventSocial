@@ -127,6 +127,40 @@ body {
 .home-content h6 {
 	line-height: 1.35 !important;
 }
+.delete-button {
+	background-color: #F04124 !important;
+	color: #FFFFFF !important;
+	display: block !important;
+	margin: 16px auto 20px auto !important;
+	width: 60% !important;
+	font-weight: bold !important;
+}
+@media only screen and (min-width: 48.063em) { /* medium and up screens only */
+	.delete-button {
+		width: 40% !important;
+	}
+}
+.delete-button:hover, .delete-button:active {
+	background-color: #B1240C !important;
+	color: #FFFFFF !important;
+}
+.manage-delete-button {
+	background-color: #F04124 !important;
+	color: #FFFFFF !important;
+	display: block !important;
+	margin: 16px auto 20px auto !important;
+	width: 60% !important;
+	font-weight: bold !important;
+}
+@media only screen and (min-width: 48.063em) { /* medium and up screens only */
+	.manage-delete-button {
+		width: 100% !important;
+	}
+}
+.manage-delete-button:hover, .manage-delete-button:active {
+	background-color: #B1240C !important;
+	color: #FFFFFF !important;
+}
 
 /* --- Sign Up Styles --- */
 .sign-up-content h2 {
@@ -449,7 +483,7 @@ hr {
 	}
 }
 
-/* --- Comment Styles --- */
+/*  --- Comment Styles --- */
 .nested-comments {
 	margin-left: 40px;
 }
@@ -507,4 +541,13 @@ hr {
   left: 0;
   z-index: 1;
   background-image: url('empty.gif');
+}   
+/* Manage Events Styles */
+.manage-tweets-table {
+	table-layout: fixed;
+}
+.manage-tweets-table td {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

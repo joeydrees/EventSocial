@@ -1,4 +1,92 @@
-<div class="row show-for-small-up">
+<div class="off-canvas-wrap show-for-small-only mobile-events-menu" data-offcanvas data-equalizer>
+	<div class="inner-wrap">
+		<nav class="tab-bar">
+		  	<section class="left-small">
+		    	<a class="left-off-canvas-toggle menu-icon button" href="#"><span></span></a>
+		  	</section>
+		</nav>
+
+		<aside class="left-off-canvas-menu" data-equalizer-watch>
+			<%= render 'events/manage_events_sidebar_mobile' %>
+		</aside>
+
+		<section class="middle tab-bar-section">
+		    <h6 class="title events-off-canvas">My Events</h1>
+		</section>
+
+		<section class="main-section display-tweets-mobile 12-columns" data-equalizer-watch>
+			<div class="row">
+				<div class="small-12 columns">
+					<h2><%= @event.name %></h2>
+					<br />
+					<h3>Tweets</h3>
+					<% if @tweets.empty? %>
+						<h4 class="no-tweets">There are currently no tweets for this event.</h4>
+					<% else %>
+						<table id="tweets-mobile" class="display responsive nowrap" cellspacing="0" width="100%">
+				            <thead>
+				                <tr>
+				                    <th>Tweet</th>
+				                    <th class="hidden">Date Created</th>
+				                    <th>Approve</th>
+				                    <th>Delete</th>
+				                </tr>
+				            </thead>
+				            <tfoot></tfoot>
+				            <tbody>
+				                <% @tweets.each do |tweet| %>
+				                    <tr>
+				                        <td style="width:75px;"><%= tweet.text %></td>
+				                        <td class="hidden"><%= tweet.tweet_created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
+				                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %></td>
+				                        <td><%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, class: "comment-icons delete-icon" %></td>
+				                    </tr>
+				                <% end %>
+				            </tbody>
+				        </table>
+				    <% end %>
+				    <br />
+				    <h3>Comments</h3>
+					<% if @comments.empty? %>
+						<h4 class="no-tweets">There are currently no comments for this event.</h4>
+					<% else %>
+						<table id="comments-mobile" class="display responsive nowrap" cellspacing="0" width="100%">
+				            <thead>
+				                <tr>
+				                    <th>Username</th>
+				                    <th>Comment</th>
+				                    <th class="hidden">Date Created</th>
+				                    <th>Approve</th>
+				                    <th>Delete</th>
+				                </tr>
+				            </thead>
+				            <tfoot></tfoot>
+				            <tbody>
+				                <% @comments.each do |comment| %>
+				                    <tr>
+				                    	<% if User.find(comment.user_id).email.blank? %>
+				                        	<td><%= User.find(comment.user_id).username %></td>
+				                        <% else %>
+				                        	<td><%= User.find(comment.user_id).email %></td>
+				                        <% end %>
+				                        <td><%= comment.comment %></td>
+				                        <td class="hidden"><%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
+				                        <td><%= link_to image_tag("thumbs-up.png"), event_comment_path(@event, comment), method: :put, class: "comment-icons" %></td>
+				                        <td><%= link_to image_tag("delete-icon.png"), event_comment_path(@event, comment), method: :delete, class: "comment-icons" %></td>
+				                    </tr>
+				                <% end %>
+				            </tbody>
+				        </table>
+				    <% end %>
+				</div>
+			</div>
+		</section>
+
+		<a class="exit-off-canvas"></a>
+	</div>
+</div>
+
+<div class="row show-for-medium-up">
 	<div class="medium-3 columns">
 		<%= render 'events/manage_events_sidebar' %>
 	</div>
@@ -9,27 +97,25 @@
 		<% if @tweets.empty? %>
 			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 		<% else %>
-			<table id="tweets" class="display responsive nowrap" cellspacing="0" width="100%">
+			<table id="tweets" class="display responsive nowrap manage-tweets-table" cellspacing="0" width="100%">
 	            <thead>
 	                <tr>
 	                    <th>Tweet</th>
 	                    <th class="hidden">Date Created</th>
 	                    <th>Approve</th>
 	                    <th>Delete</th>
+	                    <th>Tweet</th>
 	                </tr>
 	            </thead>
 	            <tfoot></tfoot>
 	            <tbody>
 	                <% @tweets.each do |tweet| %>
 	                    <tr>
-	                        <td><blockquote class="twitter-tweet" data-lang="en">
-	  							   <p lang="en" dir="ltr"><p><%= tweet.text %></p>&mdash; <%= tweet.name %> (@<%=tweet.username%>) 
-	  							   <a href="https://twitter.com/<%= tweet.username %>/status/<%= tweet.id_str %>"></a>
-	  							   </blockquote>
-	  							   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></td>
+	                        <td><%= tweet.text %></td>
 	                        <td class="hidden"><%= tweet.tweet_created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
-	                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons" %></td>
-	                        <td><%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, class: "comment-icons" %></td>
+	                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %></td>
+	                        <td><%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, class: "comment-icons delete-icon" %></td>
+	                        <td><%= tweet.text %></td>
 	                    </tr>
 	                <% end %>
 	            </tbody>
@@ -78,12 +164,19 @@
             "lengthMenu": [5, 10, 15, 20, 25],
             "columnDefs": [{ "orderable": false, "targets": [0,1,2,3] }],
         });
-	});
-</script>
 
-<script>
-	$(document).ready(function() {
-	    $('#comments').DataTable({
+        $('#comments').DataTable({
+            "order": [2, 'desc'],
+            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3,4] }],
+        });
+
+        $('#tweets-mobile').DataTable({
+            "order": [3, 'desc'],
+            "lengthMenu": [5, 10, 15, 20, 25],
+            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3] }],
+        });
+
+        $('#comments-mobile').DataTable({
             "order": [2, 'desc'],
             "columnDefs": [{ "orderable": false, "targets": [0,1,2,3,4] }],
         });

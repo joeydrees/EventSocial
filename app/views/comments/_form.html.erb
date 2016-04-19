@@ -12,7 +12,7 @@
 	<div class="field">
 	    <%= f.label :comment %>
 	    <%= f.hidden_field :parent_id %>
-	    <%= f.text_area :comment, :rows => 4, :placeholder => "Leave a comment...", :id => "text-area", :req => "text-area", :reqerror=>"Please enter a comment."  %>
+	    <%= f.text_area :comment, :rows => 4, :placeholder => "Leave a comment...", :id => "text-area", :req => "text-area", :reqerror=>"Please enter a comment.", :maxlength=>"140"  %>
   	</div>
   	<!-- <a class="button small comment-button" id="comment-submit" href="#">Post Comment</a> -->
   	<div class="actions">

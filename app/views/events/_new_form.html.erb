@@ -45,12 +45,12 @@
 		<%= f.text_area :description, :rows => 4, :id=>"event-description", :req=>"event-description", :reqerror=>"Please enter an event description." %>
 	</div>
 	<div class="field">
-		<h3><%= f.label "All tweets will be automatically approved" %></h3>
-		<%= f.check_box :tweets_approved %>
+		<%= f.check_box :tweets_approved, :id=>"approve-tweets" %>
+		<%= f.label "All tweets will be automatically approved", :for=>"approve-tweets" %>
 	</div>
 		<div class="field">
-		<h3><%= f.label "All comments will be automatically approved" %></h3>
-		<%= f.check_box :comments_approved %>
+		<%= f.check_box :comments_approved, :id=>"approve-comments" %>
+		<%= f.label "All comments will be automatically approved", :for=>"approve-comments" %>
 	</div>
 	<a class="button small new-event-button" id="event-submit" href="#">Create Event</a>
 	<div class="actions">
