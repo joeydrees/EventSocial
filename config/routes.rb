@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :events do
+    resources :manage_events
+  end
+
   resources :search_events
 
   # The priority is based upon order of creation: first created -> highest priority.

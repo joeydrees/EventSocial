@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 	        	format.js
 	      	end
 	    else
-	    	flash[:alert] = 'There was an error posting your comment.'
+	    	flash[:alert] = 'There was an error deleting your comment.'
 	    	redirect_to event_comments_path(@event, @comments)
 	    end
   	end
@@ -48,12 +48,12 @@ class CommentsController < ApplicationController
 		    	flash.now[:notice] = 'Comment was sucessfully deleted.'
 			    format.html do
 			    	flash[:notice] = 'Comment was successfully deleted.'
-			        redirect_to event_comments_path(@event, @comments)
+			        redirect_to event_manage_events_path
 			    end
 			    format.js
 			end
 		else
-			flash[:alert] = 'There was an error posting your comment.'
+			flash[:alert] = 'There was an error deleting your comment.'
 	    	redirect_to event_comments_path(@event, @comments)
 	    end
 	end

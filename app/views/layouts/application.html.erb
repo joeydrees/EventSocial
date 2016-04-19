@@ -56,7 +56,7 @@
                     <% else %>
                       <li><%= link_to "Create Your Profile", new_user_profile_path(current_user), method: :get %></li>
                     <% end %>
-                    <li><%= link_to "Manage Events", "#", method: :get %></li>
+                    <li><%= link_to "Manage Events", event_manage_events_path(@user_event, @events), method: :get %></li>
                     <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                   </ul>
               </li>

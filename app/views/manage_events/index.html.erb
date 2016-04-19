@@ -1,0 +1,129 @@
+<div class="row show-for-small-up">
+	<div class="medium-3 columns">
+		<%= render 'events/manage_events_sidebar' %>
+	</div>
+	<div class="medium-9 columns display-tweets-desktop">
+		<h2><%= @event.name %></h2>
+		<% if @event.event_pic_file_name.present? %>
+			<%= image_tag @event.event_pic.url(:medium), :class=>"event-banner-tweets" %>
+		<% end %>
+		<br />
+		<h3>Tweets</h3>
+		<% if @tweets.empty? %>
+			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
+		<% else %>
+			<table id="tweets" class="display responsive nowrap" cellspacing="0" width="100%">
+	            <thead>
+	                <tr>
+	                    <th>Tweet</th>
+	                    <th>Hashtag</th>
+	                    <th>Date Created</th>
+	                    <th>Approve</th>
+	                    <th>Delete</th>
+	                </tr>
+	            </thead>
+	            <tfoot></tfoot>
+	            <tbody>
+	                <% @tweets.each do |tweet| %>
+	                    <tr>
+	                        <td><blockquote class="twitter-tweet" data-lang="en">
+	  							   <p lang="en" dir="ltr"><p><%= tweet.text %></p>&mdash; <%= tweet.name %> (@<%=tweet.username%>) 
+	  							   <a href="https://twitter.com/<%= tweet.username %>/status/<%= tweet.id_str %>"></a>
+	  							   </blockquote>
+	  							   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></td>
+	                        <td>#<%= tweet.hashtag %></td>
+	                        <td><%= tweet.tweet_created_at %></td>
+	                        <td><%= link_to "Approve", "#", method: :get, class: "table-links" %></td>
+	                        <td><%= link_to image_tag("delete-icon.png"), event_tweet_path(@event, tweet), method: :delete, class: "comment-icons" %></td>
+	                    </tr>
+	                <% end %>
+	            </tbody>
+	        </table>
+	    <% end %>
+	    <br />
+	    <h3>Comments</h3>
+		<% if @comments.empty? %>
+			<h4 class="no-tweets">There are currently no comments for this event.</h4>
+		<% else %>
+			<table id="comments" class="display responsive nowrap" cellspacing="0" width="100%">
+	            <thead>
+	                <tr>
+	                    <th>Username</th>
+	                    <th>Comment</th>
+	                    <th>Date Created</th>
+	                    <th>Approve</th>
+	                    <th>Delete</th>
+	                </tr>
+	            </thead>
+	            <tfoot></tfoot>
+	            <tbody>
+	                <% @comments.each do |comment| %>
+	                    <tr>
+	                    	<% if User.find(comment.user_id).email.blank? %>
+	                        	<td><%= User.find(comment.user_id).username %></td>
+	                        <% else %>
+	                        	<td><%= User.find(comment.user_id).email %></td>
+	                        <% end %>
+	                        <td><%= comment.comment %></td>
+	                        <td><%= comment.created_at %></td>
+	                        <td><%= link_to "Approve", "#", method: :get, class: "table-links" %></td>
+	                        <td><%= link_to "Delete", event_comment_path(@event, comment), method: :delete, class: "table-links" %></td>
+	                    </tr>
+	                <% end %>
+	            </tbody>
+	        </table>
+	    <% end %>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+	    $('#tweets').DataTable({
+            "order": [3, 'desc'],
+            "lengthMenu": [5, 10, 15, 20, 25],
+            "columnDefs": [{ "orderable": false, "targets": [3] }],
+        });
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+	    $('#comments').DataTable({
+            "order": [2, 'desc'],
+            "columnDefs": [{ "orderable": false, "targets": [3] }],
+        });
+	});
+</script>
+
+<script>
+	$(function() {
+		var activeEventHashtag = "<%= Event.find(params[:event_id]).hashtag %>";
+		
+		var myEventsListItems = $("#my-events-list li");
+		addActiveClass(myEventsListItems, activeEventHashtag);
+
+		var subscriptionsListItems = $("#subscriptions-list li");
+		addActiveClass(subscriptionsListItems, activeEventHashtag);
+		
+		var mobileListItems = $("#mobile-events-list li");
+		addActiveClassMobile(mobileListItems, activeEventHashtag);
+	});
+
+	var addActiveClass = function(listItems, activeEventHashtag) {
+		listItems.each(function(index, li) {
+    		var eventHashtag = $(li).text().substring(1);
+    		if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+    			$(li).addClass("active");
+    		}
+		});
+	};
+
+	var addActiveClassMobile = function(listItems, activeEventHashtag) {
+		listItems.each(function(index, li) {
+    		var eventHashtag = $(li).text().substring(1);
+    		if (eventHashtag.trim().toLowerCase() == activeEventHashtag.trim().toLowerCase()) {
+    			$(li).children().addClass("active");
+    		}
+		});
+	};
+</script>

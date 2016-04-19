@@ -26,4 +26,17 @@ class TweetsController < ApplicationController
   							   </blockquote>".html_safe)
         end
 	end
+
+	def destroy
+		@event = Event.find(params[:event_id])
+		@tweets = Tweet.where(event_id: @event.id)
+		@tweet = Tweet.find(params[:id])
+	    if @tweet.destroy
+		    flash.now[:notice] = 'Tweet was sucessfully deleted.'
+	        redirect_to event_manage_events_path
+		else
+			flash[:alert] = 'There was an error deleting your tweet.'
+	    	redirect_to event_manage_events_path
+	    end
+	end
 end
