@@ -11,6 +11,11 @@ class Tweet < ActiveRecord::Base
  			t.event_id = event.id
  			t.tweet_created_at = tweet.created_at
  			t.hashtag = event.hashtag
+ 			if event.tweets_approved == true
+ 				t.approved = true
+ 			else
+ 				t.approved = false
+ 			end
    		end
 	end
 

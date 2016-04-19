@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404183416) do
+ActiveRecord::Schema.define(version: 20160419035254) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20160404183416) do
     t.string   "event_time"
     t.string   "description"
     t.string   "image"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.string   "hashtag"
     t.string   "event_pic_file_name"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160404183416) do
     t.integer  "event_pic_file_size"
     t.datetime "event_pic_updated_at"
     t.string   "location"
+    t.boolean  "tweets_approved",        default: true
+    t.boolean  "comments_approved",      default: true
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"

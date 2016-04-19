@@ -10,11 +10,11 @@
 	    </div>
 	<% end %>
 	<div class="field">
-		<h3><%= f.label :name %></h3>
+		<h3><%= f.label "Event Name" %></h3>
 		<%= f.text_field :name, :id=>"event-name", :req=>"event-name", :reqerror=>"Please enter an event name." %>
 	</div>
 	<div class="field">
-		<h3><%= f.label :hashtag %></h3>
+		<h3><%= f.label "Event Hashtag" %></h3>
 		<div class="row collapse">
 			<div class="small-1 columns">
 				<span class="prefix">#</span>
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div class="field">
-    	<%= f.label :event_header %>
+    	<%= f.label "Event Header Image" %>
     	<%= f.file_field :event_pic %>
     	<% if @event.event_pic_file_name.present? %>
     		Current picture:&nbsp;&nbsp;&nbsp;
@@ -35,21 +35,29 @@
   	</div>
   	<br />
   	<div class="field">
-  		<h3><%= f.label :location %></h3>
+  		<h3><%= f.label "Event Location" %></h3>
   		<%= f.text_field :location, :id=>"location", :req=>"location", :reqerror=>"Please enter a location."%>
   	</div>
 	<div class="field">
-		<h3><%= f.label :event_date %></h3>
+		<h3><%= f.label "Event Date" %></h3>
 		<%= f.text_field :event_date, :id=>"dp1", :req=>"dp1", :reqerror=>"Please enter a date for the event.", :html=>{:class => "date-picker"} %>
 	</div>
 	<div class="field">
-		<h3><%= f.label :event_time %></h3>
+		<h3><%= f.label "Event Time" %></h3>
 		<%= f.time_select :event_time, :combined => true, :default => Time.now, :minute_interval => 30, :time_separator => "", :start_hour => 0, :start_minute => 0, :end_hour => 23,
   			:end_minute => 30, :ampm => true %>
 	</div>
 	<div class="field">
-		<h3><%= f.label :description %></h3>
+		<h3><%= f.label "Event Description" %></h3>
 		<%= f.text_area :description, :rows => 4, :id=>"event-description", :req=>"event-description", :reqerror=>"Please enter an event description." %>
+	</div>
+	<div class="field">
+		<h3><%= f.label "All tweets will be automatically approved" %></h3>
+		<%= f.check_box :tweets_approved %>
+	</div>
+		<div class="field">
+		<h3><%= f.label "All comments will be automatically approved" %></h3>
+		<%= f.check_box :comments_approved %>
 	</div>
 	<a class="button small new-event-button" id="event-submit" href="#">Update Event</a>
 	<div class="actions">

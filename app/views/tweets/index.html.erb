@@ -53,11 +53,11 @@
 			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 		<% else %>
 			<% @tweets.each do |tweet| %>
+				<%= link_to image_tag("delete-icon.png"), event_tweet_path(@event, tweet), :class => "comment-icons", data: { :confirm => "Are you sure you want to delete this tweet?" }, :method => :delete %>
 				<blockquote class="twitter-tweet" data-lang="en">
 				<p lang="en" dir="ltr"><p><%= tweet.text %></p>&mdash; <%= tweet.name %> (@<%=tweet.username%>) 
 				<a href="https://twitter.com/<%= tweet.username %>/status/<%= tweet.id_str %>"></a>
 				</blockquote>
-				<%= link_to image_tag("delete-icon.png"), event_tweet_path(@event, tweet), :class => "comment-icons", data: { :confirm => "Are you sure you want to delete this tweet?" }, :method => :delete %>
 				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			<% end %>
 		<% end %>
