@@ -449,7 +449,7 @@ hr {
 	}
 }
 
-/*  --- Comment Styles --- */
+/* --- Comment Styles --- */
 .nested-comments {
 	margin-left: 40px;
 }
@@ -507,4 +507,4 @@ hr {
   left: 0;
   z-index: 1;
   background-image: url('empty.gif');
-}   
+}

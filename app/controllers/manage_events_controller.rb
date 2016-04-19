@@ -15,7 +15,7 @@ class ManageEventsController < ApplicationController
 
 		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false).order("tweet_created_at DESC")
 
-		@comments = Comment.where(event_id: @event.id)
+		@comments = Comment.where(event_id: @event.id, approved: false).order("created_at DESC")
 	end
 
 	def update
