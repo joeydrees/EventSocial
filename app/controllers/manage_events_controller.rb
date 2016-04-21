@@ -13,7 +13,7 @@ class ManageEventsController < ApplicationController
 			end
 		end
 
-		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false, deleted: false).order("tweet_created_at DESC")
+		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false, deleted: false).order("tweet_created_at DESC").paginate(page: params[:page], per_page: 5)
 
 		@comments = Comment.where(event_id: @event.id, approved: false).order("created_at DESC")
 	end

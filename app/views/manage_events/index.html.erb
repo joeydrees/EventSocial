@@ -97,29 +97,25 @@
 		<% if @tweets.empty? %>
 			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
 		<% else %>
-			<table id="tweets" class="display responsive nowrap manage-tweets-table" cellspacing="0" width="100%">
-	            <thead>
-	                <tr>
-	                    <th>Tweet</th>
-	                    <th class="hidden">Date Created</th>
-	                    <th>Approve</th>
-	                    <th>Delete</th>
-	                    <th>Tweet</th>
-	                </tr>
-	            </thead>
-	            <tfoot></tfoot>
-	            <tbody>
-	                <% @tweets.each do |tweet| %>
-	                    <tr>
-	                        <td><%= tweet.text %></td>
-	                        <td class="hidden"><%= tweet.tweet_created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
-	                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %></td>
-	                        <td><%= link_to image_tag("delete-icon.png"), delete_tweet_event_manage_event_path(@event, tweet), method: :put, class: "comment-icons delete-icon" %></td>
-	                        <td><%= tweet.text %></td>
-	                    </tr>
-	                <% end %>
-	            </tbody>
-	        </table>
+			<div class="digg_pagination">
+			    <div class="page_info">
+			      <%= page_entries_info @tweets %>
+			    </div>
+			    <%= will_paginate @tweets, :container => false %>
+			</div>
+			<% @tweets.each do |tweet| %>
+				<blockquote class="twitter-tweet" data-lang="en">
+					<p lang="en" dir="ltr"><p><%= tweet.text %></p>&mdash; <%= tweet.name %> (@<%=tweet.username%>) 
+					<a href="https://twitter.com/<%= tweet.username %>/status/<%= tweet.id_str %>"></a>
+				</blockquote>
+				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<% end %>
+	        <div class="digg_pagination">
+			    <div class="page_info">
+			      <%= page_entries_info @tweets %>
+			    </div>
+			    <%= will_paginate @tweets, :container => false %>
+			</div>
 	    <% end %>
 	    <br />
 	    <h3>Comments</h3>
@@ -156,32 +152,6 @@
 	    <% end %>
 	</div>
 </div>
-
-<script>
-	$(document).ready(function() {
-	    $('#tweets').DataTable({
-            "order": [3, 'desc'],
-            "lengthMenu": [5, 10, 15, 20, 25],
-            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3] }],
-        });
-
-        $('#comments').DataTable({
-            "order": [2, 'desc'],
-            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3,4] }],
-        });
-
-        $('#tweets-mobile').DataTable({
-            "order": [3, 'desc'],
-            "lengthMenu": [5, 10, 15, 20, 25],
-            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3] }],
-        });
-
-        $('#comments-mobile').DataTable({
-            "order": [2, 'desc'],
-            "columnDefs": [{ "orderable": false, "targets": [0,1,2,3,4] }],
-        });
-	});
-</script>
 
 <script>
 	$(function() {
