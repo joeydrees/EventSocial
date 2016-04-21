@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/events/:id/unsubscribe' => 'events#unsubscribe'
 
   resources :events do
-    resources :tweets
+    resources :tweets do
+      put 'delete', :on => :member
+    end
   end
 
   resources :events do
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :manage_events
+    resources :manage_events do
+      put 'delete_tweet', :on => :member
+    end
   end
 
   resources :search_events

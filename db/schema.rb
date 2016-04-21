@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419035254) do
+ActiveRecord::Schema.define(version: 20160421155303) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -77,11 +77,12 @@ ActiveRecord::Schema.define(version: 20160419035254) do
     t.string   "text"
     t.string   "id_str"
     t.boolean  "approved",         default: true
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "event_id"
     t.datetime "tweet_created_at"
     t.string   "hashtag"
+    t.boolean  "deleted",          default: false
   end
 
   create_table "users", force: :cascade do |t|

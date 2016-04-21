@@ -17,8 +17,19 @@ class TweetsController < ApplicationController
 			end
 		end
 
-    	@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: true).order("tweet_created_at DESC")
+    	@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: true, deleted: false).order("tweet_created_at DESC")
 	end
+
+  	def delete
+  		@tweet = Tweet.find(params[:id])
+  		if @tweet.update_attribute(:deleted, "true")
+	    	flash[:notice] = "Tweet was successfully deleted."
+	      	redirect_to event_tweets_path
+	    else
+	      	flash[:alert] = "There was an error deleting the tweet."
+	      	redirect_to event_tweets_path
+	    end
+  	end
 
 	def destroy
 		@event = Event.find(params[:event_id])

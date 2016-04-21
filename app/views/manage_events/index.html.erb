@@ -39,7 +39,7 @@
 				                        <td style="width:75px;"><%= tweet.text %></td>
 				                        <td class="hidden"><%= tweet.tweet_created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
 				                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %></td>
-				                        <td><%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, class: "comment-icons delete-icon" %></td>
+				                        <td><%= link_to image_tag("delete-icon.png"), delete_tweet_event_manage_event_path(@event, tweet), method: :put, class: "comment-icons delete-icon" %></td>
 				                    </tr>
 				                <% end %>
 				            </tbody>
@@ -114,7 +114,7 @@
 	                        <td><%= tweet.text %></td>
 	                        <td class="hidden"><%= tweet.tweet_created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %d, %Y @ %I:%M %p") %></td>
 	                        <td><%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %></td>
-	                        <td><%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, class: "comment-icons delete-icon" %></td>
+	                        <td><%= link_to image_tag("delete-icon.png"), delete_tweet_event_manage_event_path(@event, tweet), method: :put, class: "comment-icons delete-icon" %></td>
 	                        <td><%= tweet.text %></td>
 	                    </tr>
 	                <% end %>

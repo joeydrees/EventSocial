@@ -13,7 +13,7 @@ class ManageEventsController < ApplicationController
 			end
 		end
 
-		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false).order("tweet_created_at DESC")
+		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false, deleted: false).order("tweet_created_at DESC")
 
 		@comments = Comment.where(event_id: @event.id, approved: false).order("created_at DESC")
 	end
@@ -29,17 +29,19 @@ class ManageEventsController < ApplicationController
 	    end
   	end
 
+  	def delete_tweet
+  		@tweet = Tweet.find(params[:id])
+  		if @tweet.update_attribute(:deleted, "true")
+	    	flash[:notice] = "Tweet was successfully deleted."
+	      	redirect_to event_manage_events_path
+	    else
+	      	flash[:alert] = "There was an error deleting the tweet."
+	      	redirect_to event_manage_events_path
+	    end
+  	end
+
 	def destroy
 		@event = Event.find(params[:event_id])
-		@tweets = Tweet.where(event_id: @event.id)
-		@tweet = Tweet.find(params[:id])
-	    if @tweet.destroy
-		    flash.now[:notice] = 'Tweet was sucessfully deleted.'
-	        redirect_to event_manage_events_path
-		else
-			flash[:alert] = 'There was an error deleting your tweet.'
-	    	redirect_to event_manage_events_path
-	    end
 	    if @event.destroy
 	    	flash.now[:notice] = 'Event was sucessfully deleted.'
 	        redirect_to event_manage_events_path
