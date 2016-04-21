@@ -285,6 +285,9 @@ hr {
 .event-banner-tweets {
 	margin-bottom: 10px;
 }
+.tweet-delete {
+	margin-top: 7px;
+}
 
 /* --- Events Styles --- */
 .accordion .accordion-navigation > a, .accordion dd > a {
