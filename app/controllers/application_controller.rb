@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :get_event
+  before_action :get_event
 
   protected
 	  def get_event
@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
 
 	  end
 
+	  def only_event_owner
+	  	@user = current_user
+	  	@event = Event.find(params[:event_id])
+
+	  	if @event.user_id != @user.id
+	  		redirect_to root_path
+	  	end
+	  end 
 end

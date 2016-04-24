@@ -8,10 +8,6 @@
 	<li><label>My Events</label></li>
 	<% @events.each do |event| %>
 		<% event_id = Event.find(event.id) %>
-		<% if params[:controller] == "tweets" %>
-			<li><%= link_to "##{event.hashtag}", event_tweets_path(event), method: :get %>
-		<% elsif params[:controller] == "comments" %>
-			<li><%= link_to "##{event.hashtag}", event_comments_path(event), method: :get %>
-		<% end %>
+			<li><%= link_to "##{event.hashtag}", event_manage_events_path(event), method: :get %>
 	<% end %>
 </ul>

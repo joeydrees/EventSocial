@@ -1,5 +1,8 @@
 class ManageEventsController < ApplicationController
 
+	before_action :authenticate_user!
+	before_action :only_event_owner
+
 	def index
 		@user = current_user
 		@events = Event.where(user_id: @user.id)
@@ -15,7 +18,8 @@ class ManageEventsController < ApplicationController
 
 		@tweets = Tweet.where(event_id: @event.id, hashtag: @event.hashtag, approved: false, deleted: false).order("tweet_created_at DESC").paginate(page: params[:page], per_page: 5)
 
-		@comments = Comment.where(event_id: @event.id, approved: false).order("created_at DESC")
+		@comments = Comment.where(event_id: @event.id, approved: false).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+
 	end
 
 	def update
