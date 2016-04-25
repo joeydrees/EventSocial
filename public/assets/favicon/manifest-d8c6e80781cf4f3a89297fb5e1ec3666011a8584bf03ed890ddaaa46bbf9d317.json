@@ -1,0 +1,41 @@
+{
+	"name": "Event Social",
+	"icons": [
+		{
+			"src": "/assets/favicon/android-chrome-36x36-3b0095ae3246bd4cbeeac41159426b5cc206378f168899baaf086e590e530ebb.png",
+			"sizes": "36x36",
+			"type": "image\/png",
+			"density": 0.75
+		},
+		{
+			"src": "/assets/favicon/android-chrome-48x48-4d9c0a35c4dc7fc660b28781b28ff65e123010d220be598ae6d72d004adea31e.png",
+			"sizes": "48x48",
+			"type": "image\/png",
+			"density": 1
+		},
+		{
+			"src": "/assets/favicon/android-chrome-72x72-7ebcc1075c5d17aebb3f876c159cd0b78665b61ad8ce56c9f0680f77d60d2acd.png",
+			"sizes": "72x72",
+			"type": "image\/png",
+			"density": 1.5
+		},
+		{
+			"src": "/assets/favicon/android-chrome-96x96-44f568ee0c3d9f17c1da96ac3357eb9261fbe5652e602a383465ac7dd588a7c2.png",
+			"sizes": "96x96",
+			"type": "image\/png",
+			"density": 2
+		},
+		{
+			"src": "/assets/favicon/android-chrome-144x144-c222879ce02f30359f134c30dc2e8db244ce520ca8fb58abfa7c114bb3d2db0b.png",
+			"sizes": "144x144",
+			"type": "image\/png",
+			"density": 3
+		},
+		{
+			"src": "/assets/favicon/android-chrome-192x192-32a6ae5f09f977cdddd2cacf612fadaac2df8962fa74b5651d070abff9b51e2d.png",
+			"sizes": "192x192",
+			"type": "image\/png",
+			"density": 4
+		}
+	]
+}
