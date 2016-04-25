@@ -108,6 +108,12 @@
 							    </a>
 							</div>
 				    	<% end %>
+				    	<div class="digg_pagination">
+						    <div class="page_info">
+						      <%= page_entries_info @comments %>
+						    </div>
+					    <%= will_paginate @comments, :container => false %>
+					</div>
 				    <% end %>
 				</div>
 			</div>
@@ -213,7 +219,12 @@
 				    </a>
 				</div>
 	    	<% end %>
-	    	<!-- PAGINATION FOR COMMENTS -->
+			<div class="digg_pagination">
+			    <div class="page_info">
+			      <%= page_entries_info @comments %>
+			    </div>
+			    <%= will_paginate @comments, :container => false %>
+			</div>
 		<% end %>
 	</div>
 </div>
