@@ -1,5 +1,6 @@
 <%= link_to "New Event", new_event_path, method: :get, class: "button small subscribe-button" %>
 <%= link_to "Search Events", search_events_path, method: :get, class: "button small subscribe-button" %>
+<%= link_to "Manage Event", event_manage_events_path(@event), method: :get, class: "button small subscribe-button" %>
 <h5 class="side-nav-title">My Events</h5>
 <ul class="side-nav events-list" id="my-events-list">
 	<% @events.each do |event| %>

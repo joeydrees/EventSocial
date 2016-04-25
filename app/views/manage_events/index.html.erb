@@ -21,7 +21,7 @@
 					<br />
 					<h3>Tweets</h3>
 					<% if @tweets.empty? %>
-						<h4 class="no-tweets">There are currently no tweets for this event.</h4>
+						<h4 class="no-tweets">There are currently no pending tweets for this event.</h4>
 					<% else %>
 						<div class="digg_pagination">
 						    <div class="page_info">
@@ -38,7 +38,7 @@
 		    				</div>
 		    				<div class="small-2 columns tweet-delete">
 		    					<%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %>
-		    					<%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :delete, data: { :confirm => "Are you sure you want to delete this tweet?" }, class: "comment-icons delete-icon" %>
+		    					<%= link_to image_tag("delete-icon.png"), delete_tweet_event_manage_event_path(@event, tweet), method: :put, data: { :confirm => "Are you sure you want to delete this tweet?" }, class: "comment-icons delete-icon" %>
 		    				</div>
 							<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 						<% end %>
@@ -52,7 +52,7 @@
 				    <br />
 				    <h3>Comments</h3>
 					<% if @comments.empty? %>
-						<h4 class="no-tweets">There are currently no comments for this event.</h4>
+						<h4 class="no-tweets">There are currently no pending comments for this event.</h4>
 					<% else %>
 						<div class="digg_pagination">
 						    <div class="page_info">
@@ -132,7 +132,7 @@
 		<br />
 		<h3>Tweets</h3>
 		<% if @tweets.empty? %>
-			<h4 class="no-tweets">There are currently no tweets for this event.</h4>
+			<h4 class="no-tweets">There are currently no pending tweets for this event.</h4>
 		<% else %>
 			<div class="digg_pagination">
 			    <div class="page_info">
@@ -149,7 +149,7 @@
 				</div>
 				<div class="small-12 medium-3 columns tweet-delete">
 					<%= link_to image_tag("thumbs-up.png"), event_manage_event_path(@event, tweet), method: :put, class: "comment-icons approve-icon" %>
-					<%= link_to image_tag("delete-icon.png"), event_manage_event_path(@event, tweet), method: :put, data: { :confirm => "Are you sure you want to delete this tweet?" }, class: "comment-icons delete-icon" %>
+					<%= link_to image_tag("delete-icon.png"), delete_tweet_event_manage_event_path(@event, tweet), method: :put, data: { :confirm => "Are you sure you want to delete this tweet?" }, class: "comment-icons delete-icon" %>
 				</div>
 				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			<% end %>
@@ -163,7 +163,7 @@
 	    <br />
 	    <h3>Comments</h3>
 		<% if @comments.empty? %>
-			<h4 class="no-tweets">There are currently no comments for this event.</h4>
+			<h4 class="no-tweets">There are currently no pending comments for this event.</h4>
 		<% else %>
 			<div class="digg_pagination">
 			    <div class="page_info">
