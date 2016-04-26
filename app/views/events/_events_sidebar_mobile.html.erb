@@ -1,7 +1,7 @@
 <ul class="off-canvas-list" id="mobile-events-list">
 	<li><%= link_to "New Event", new_event_path, method: :get %></li>
 	<li><%= link_to "Search Events", search_events_path, method: :get %></li>
-	<% if @event.user_id == @user.id %>
+	<% if Event.find(params[:event_id]).user_id == @user.id %>
 		<li><%= link_to "Manage Event", event_manage_events_path(@event), method: :get %></li>
 	<% end %>
 	<li><label>My Events</label></li>

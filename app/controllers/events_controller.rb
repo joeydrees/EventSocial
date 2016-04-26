@@ -4,7 +4,6 @@ class EventsController < ApplicationController
 
 	def index
 		@user = current_user
-		@event = Event.find(params[:event_id])
 		@events = Event.where(user_id: @user.id)
 		@subscriptions = @user.subscriptions
 	end
